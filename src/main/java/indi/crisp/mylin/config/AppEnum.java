@@ -18,4 +18,18 @@ public enum AppEnum {
     public String getDescribe() {
         return describe;
     }
+
+    /**
+     * 查询一个code对应的消息
+     * @param code
+     * @return
+     */
+    public String find(int code) {
+        for ( var i : AppEnum.values() ) {
+            if ( code == i.getCode() ) {
+                return i.getDescribe();
+            }
+        }
+        return null;
+    }
 }
