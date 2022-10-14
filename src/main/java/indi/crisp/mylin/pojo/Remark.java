@@ -2,9 +2,11 @@ package indi.crisp.mylin.pojo;
 
 import java.lang.Integer;
 import java.lang.String;
+import java.sql.Timestamp;
 
 public class Remark {
 
+	protected Timestamp ktime;
 	protected Integer kid;
 	protected String kinfo;
 	protected Integer kemp;
@@ -12,10 +14,19 @@ public class Remark {
 	public Remark() {
 	}
 
-	public Remark(Integer kid, String kinfo, Integer kemp) {
+	public Remark(Timestamp ktime, Integer kid, String kinfo, Integer kemp) {
+		 this.ktime = ktime;
 		 this.kid = kid;
 		 this.kinfo = kinfo;
 		 this.kemp = kemp;
+	}
+
+	public Timestamp getKtime() {
+		return this.ktime;
+	}
+
+	public void setKtime(Timestamp ktime) {
+		 this.ktime = ktime;
 	}
 
 	public Integer getKid() {

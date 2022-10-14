@@ -6,19 +6,19 @@
 <mapper namespace="indi.crisp.mylin.dao.EmployeeDAO">
 
 	<select id="findEmployeeByID" resultType="indi.crisp.mylin.pojo.Employee">
-		SELECT eloginid, ename, estatus, edept, epwd, empno, esalt, erole FROM tblemployee WHERE empno = #{empno}
+		SELECT eloginid, ename, estatus, edept, epwd, elasttime, empno, esalt, erole FROM tblemployee WHERE empno = #{empno}
 	</select>
 
 	<select id="findEmployeeList" resultType="indi.crisp.mylin.pojo.Employee">
-		SELECT eloginid, ename, estatus, edept, epwd, empno, esalt, erole FROM tblemployee LIMIT #{start}, #{count}
+		SELECT eloginid, ename, estatus, edept, epwd, elasttime, empno, esalt, erole FROM tblemployee LIMIT #{start}, #{count}
 	</select>
 
 	<insert id="insertEmployee" parameterType="indi.crisp.mylin.pojo.Employee">
-		INSERT INTO tblemployee (eloginid, ename, estatus, edept, epwd, esalt, erole) values (#{employee.eloginid}, #{employee.ename}, #{employee.estatus}, #{employee.edept}, #{employee.epwd}, #{employee.esalt}, #{employee.erole})
+		INSERT INTO tblemployee (eloginid, ename, estatus, edept, epwd, elasttime, esalt, erole) values (#{employee.eloginid}, #{employee.ename}, #{employee.estatus}, #{employee.edept}, #{employee.epwd}, #{employee.elasttime}, #{employee.esalt}, #{employee.erole})
 	</insert>
 
 	<update id="updateEmployee" parameterType="indi.crisp.mylin.pojo.Employee">
-		UPDATE tblemployee SET  eloginid = #{employee.eloginid}, ename = #{employee.ename}, estatus = #{employee.estatus}, edept = #{employee.edept}, epwd = #{employee.epwd}, esalt = #{employee.esalt}, erole = #{employee.erole} WHERE empno = #{employee.empno}
+		UPDATE tblemployee SET  eloginid = #{employee.eloginid}, ename = #{employee.ename}, estatus = #{employee.estatus}, edept = #{employee.edept}, epwd = #{employee.epwd}, elasttime = #{employee.elasttime}, esalt = #{employee.esalt}, erole = #{employee.erole} WHERE empno = #{employee.empno}
 	</update>
 
 	<update id="updateEmployeeAuto" parameterType="indi.crisp.mylin.pojo.Employee">
@@ -42,6 +42,10 @@
 
 			<if test="employee.epwd != null">
 				epwd = #{employee.epwd},
+			</if>
+
+			<if test="employee.elasttime != null">
+				elasttime = #{employee.elasttime},
 			</if>
 
 			<if test="employee.esalt != null">

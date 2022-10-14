@@ -6,24 +6,28 @@
 <mapper namespace="indi.crisp.mylin.dao.RemarkDAO">
 
 	<select id="findRemarkByID" resultType="indi.crisp.mylin.pojo.Remark">
-		SELECT kid, kinfo, kemp FROM tblremark WHERE kid = #{kid}
+		SELECT ktime, kid, kinfo, kemp FROM tblremark WHERE kid = #{kid}
 	</select>
 
 	<select id="findRemarkList" resultType="indi.crisp.mylin.pojo.Remark">
-		SELECT kid, kinfo, kemp FROM tblremark LIMIT #{start}, #{count}
+		SELECT ktime, kid, kinfo, kemp FROM tblremark LIMIT #{start}, #{count}
 	</select>
 
 	<insert id="insertRemark" parameterType="indi.crisp.mylin.pojo.Remark">
-		INSERT INTO tblremark (kinfo, kemp) values (#{remark.kinfo}, #{remark.kemp})
+		INSERT INTO tblremark (ktime, kinfo, kemp) values (#{remark.ktime}, #{remark.kinfo}, #{remark.kemp})
 	</insert>
 
 	<update id="updateRemark" parameterType="indi.crisp.mylin.pojo.Remark">
-		UPDATE tblremark SET  kinfo = #{remark.kinfo}, kemp = #{remark.kemp} WHERE kid = #{remark.kid}
+		UPDATE tblremark SET  ktime = #{remark.ktime}, kinfo = #{remark.kinfo}, kemp = #{remark.kemp} WHERE kid = #{remark.kid}
 	</update>
 
 	<update id="updateRemarkAuto" parameterType="indi.crisp.mylin.pojo.Remark">
 		UPDATE tblremark
 		<trim prefix="SET" suffixOverrides=",">
+			<if test="remark.ktime != null">
+				ktime = #{remark.ktime},
+			</if>
+
 			<if test="remark.kinfo != null">
 				kinfo = #{remark.kinfo},
 			</if>
