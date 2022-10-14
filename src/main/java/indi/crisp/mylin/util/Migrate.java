@@ -13,10 +13,9 @@ public class Migrate {
             if ( mothed.getName().matches("get.*") ) {
                 var t1 = mothed.getName().substring(3);
                 try {
-                    var t2 = target.getClass().getMethod("set"+t1, mothed.getReturnType().getClass());
+                    var t2 = target.getClass().getMethod("set"+t1, mothed.getReturnType());
                     t2.invoke(target, mothed.invoke(source));
                 } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         }
