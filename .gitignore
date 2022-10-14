@@ -6,9 +6,9 @@ out/
 *.iml
 
 # maven
-# target/
-# .mvn/
-# pom.xml
-# mvnw*
-# mvnw.cmd
+target/
+.mvn/
+pom.xml
+mvnw*
+mvnw.cmd
 
