@@ -18,6 +18,7 @@ public class RemarkServiceImpl implements RemarkService {
         try {
             var remarkDAO = session.getMapper(RemarkDAO.class);
             if ( remarkDAO.insertRemark(remark) > 0 ) {
+                session.commit();
                 return AppEnum.REMARK_INSERT_YES.getCode();
             }
             return AppEnum.REMARK_INSERT_NO.getCode();
@@ -35,6 +36,7 @@ public class RemarkServiceImpl implements RemarkService {
         try {
             var remarkDAO = session.getMapper(RemarkDAO.class);
             if ( remarkDAO.deleteRemark(kid) > 0 ) {
+                session.commit();
                 return AppEnum.REMARK_DELETE_YES.getCode();
 
             }
@@ -53,6 +55,7 @@ public class RemarkServiceImpl implements RemarkService {
         try {
             var remarkDAO = session.getMapper(RemarkDAO.class);
             if ( remarkDAO.updateRemarkAuto(remark) > 0 ) {
+                session.commit();
                 return AppEnum.REMARK_UPDATE_YES.getCode();
             }
             return AppEnum.REMARK_UPDATE_NO.getCode();

@@ -26,4 +26,7 @@ public interface EmployeeService {
      * @throws AppAbnormal-泛型中保存的具体为VO
      */
     Feedback<Employee> login(String account, String password) throws AppAbnormal;
+
+    // 根据账号查找员工
+    Employee findEmployeebyAccount(String account) throws  AppAbnormal;
 }

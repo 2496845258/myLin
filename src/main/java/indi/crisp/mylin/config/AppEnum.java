@@ -11,10 +11,18 @@ public enum AppEnum {
     REMARK_UPDATE_YES(1005, "更新便签成功"),
     REMARK_UPDATE_NO(1006, "更新便签失败, 原因可能是找不到需要删除的便签"),
 
+    EMPLOYEE_ACCOUNT_SAME(1007,"该账号已被注册"),
+    EMPLOYEE_REGISTER_YES(1008,"注册成功"),
+    EMPLOYEE_REGISTER_NO(1009,"注册失败"),
 
 
 
-    ERROR_REMARK_NULL(1101, "需要持久化的便签为空"),
+
+
+
+    ERROR_REMARK_NULL(2101, "需要持久化的便签为空"),
+    ERROR_ACCOUNT_NULL(2102,"账号为空"),
+    ERROR_PASSWORD_NULL(2103,"密码为空"),
     TEST(0001, "测试");
 
     private int code;
