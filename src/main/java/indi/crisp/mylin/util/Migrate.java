@@ -15,12 +15,8 @@ public class Migrate {
                 try {
                     var t2 = target.getClass().getMethod("set"+t1, mothed.getReturnType().getClass());
                     t2.invoke(target, mothed.invoke(source));
-                } catch (NoSuchMethodException e) {
-                    throw new RuntimeException(e);
-                } catch (InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException(e);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         }
