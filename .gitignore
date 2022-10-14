@@ -1,0 +1,14 @@
+#NO . files
+
+#idea
+out/
+.idea/
+*.iml
+
+# maven
+# target/
+# .mvn/
+# pom.xml
+# mvnw*
+# mvnw.cmd
+
