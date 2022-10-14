@@ -56,4 +56,10 @@
 		SELECT COUNT(pid) FROM tblperm;
 	</select>
 
+	<select id="findEmpnoList" resultType="indi.crisp.mylin.pojo.Perm">
+		SELECT proute, pnameZH, picon, pname, pdesc, pid
+		FROM tblperm INNER JOIN tblroleperm
+		ON rppid = pid
+		WHERE rprid = #{rid};
+	</select>
 </mapper>

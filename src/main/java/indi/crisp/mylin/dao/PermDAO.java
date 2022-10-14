@@ -13,4 +13,12 @@ public interface PermDAO {
 	Integer updatePermAuto(@Param("perm") Perm perm);
 	Integer deletePerm(@Param("pid") int pid);
 	Integer countAll();
+
+
+	/**
+	 * 根据角色id查询出权限列表
+	 * @param rid-角色id
+	 * @return List<Perm>-权限列表
+	 */
+	List<Perm> findEmpnoList(@Param("rid") int rid);
 }

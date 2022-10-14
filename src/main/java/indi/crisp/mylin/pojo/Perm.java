@@ -72,4 +72,15 @@ public class Perm {
 		 this.pid = pid;
 	}
 
+	@Override
+	public String toString() {
+		return "Perm{" +
+				"proute='" + proute + '\'' +
+				", pnameZH='" + pnameZH + '\'' +
+				", picon='" + picon + '\'' +
+				", pname='" + pname + '\'' +
+				", pdesc='" + pdesc + '\'' +
+				", pid=" + pid +
+				'}';
+	}
 }

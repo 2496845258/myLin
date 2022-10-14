@@ -103,4 +103,18 @@ public class Employee {
 		 this.erole = erole;
 	}
 
+	@Override
+	public String toString() {
+		return "Employee{" +
+				"eloginid='" + eloginid + '\'' +
+				", ename='" + ename + '\'' +
+				", estatus=" + estatus +
+				", edept=" + edept +
+				", epwd='" + epwd + '\'' +
+				", elasttime=" + elasttime +
+				", empno=" + empno +
+				", esalt='" + esalt + '\'' +
+				", erole=" + erole +
+				'}';
+	}
 }

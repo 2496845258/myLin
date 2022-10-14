@@ -52,4 +52,13 @@ public class Role {
 		 this.rnameZH = rnameZH;
 	}
 
+	@Override
+	public String toString() {
+		return "Role{" +
+				"rname='" + rname + '\'' +
+				", rdesc='" + rdesc + '\'' +
+				", rid=" + rid +
+				", rnameZH='" + rnameZH + '\'' +
+				'}';
+	}
 }

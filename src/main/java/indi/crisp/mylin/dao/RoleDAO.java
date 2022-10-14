@@ -13,4 +13,11 @@ public interface RoleDAO {
 	Integer updateRoleAuto(@Param("role") Role role);
 	Integer deleteRole(@Param("rid") int rid);
 	Integer countAll();
+
+	/**
+	 * 根据员工id查到角色信息
+	 * @param empno-员工id
+	 * @return Role-角色
+	 */
+	Role findEmpnoRole(@Param("empno") int empno);
 }

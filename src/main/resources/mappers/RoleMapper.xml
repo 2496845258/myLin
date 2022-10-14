@@ -48,4 +48,10 @@
 		SELECT COUNT(rid) FROM tblrole;
 	</select>
 
+	<select id="findEmpnoRole" resultType="indi.crisp.mylin.pojo.Role">
+		SELECT rname, rdesc, rid, rnameZH
+		FROM tblrole INNER JOIN tblemployee ON rid = erole
+		WHERE empno = #{empno}
+	</select>
+
 </mapper>
