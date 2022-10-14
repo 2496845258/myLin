@@ -21,7 +21,17 @@
 	</environments>
 
 	<mappers>
-		<!--<mapper resource="mappers/BookMapper.xml"/>-->
+		<mapper resource="mappers/DeptMapper.xml"></mapper>
+		<mapper resource="mappers/DictMapper.xml"></mapper>
+		<mapper resource="mappers/EmployeeMapper.xml"></mapper>
+		<mapper resource="mappers/LeaveMapper.xml"></mapper>
+		<mapper resource="mappers/LogMapper.xml"></mapper>
+		<mapper resource="mappers/NotifyMapper.xml"></mapper>
+		<mapper resource="mappers/PermMapper.xml"></mapper>
+		<mapper resource="mappers/RemarkMapper.xml"></mapper>
+		<mapper resource="mappers/RoleMapper.xml"></mapper>
+		<mapper resource="mappers/RolepermMapper.xml"></mapper>
+
 	</mappers>
 
 </configuration>
