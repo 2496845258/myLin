@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="indi.crisp.mylin.dao.RoleDAO">
+
+	<select id="findRoleByID" resultType="indi.crisp.mylin.pojo.Role">
+		SELECT rname, rdesc, rid, rnameZH FROM tblrole WHERE rid = #{rid}
+	</select>
+
+	<select id="findRoleList" resultType="indi.crisp.mylin.pojo.Role">
+		SELECT rname, rdesc, rid, rnameZH FROM tblrole LIMIT #{start}, #{count}
+	</select>
+
+	<insert id="insertRole" parameterType="indi.crisp.mylin.pojo.Role">
+		INSERT INTO tblrole (rname, rdesc, rnameZH) values (#{role.rname}, #{role.rdesc}, #{role.rnameZH})
+	</insert>
+
+	<update id="updateRole" parameterType="indi.crisp.mylin.pojo.Role">
+		UPDATE tblrole SET  rname = #{role.rname}, rdesc = #{role.rdesc}, rnameZH = #{role.rnameZH} WHERE rid = #{role.rid}
+	</update>
+
+	<update id="updateRoleAuto" parameterType="indi.crisp.mylin.pojo.Role">
+		UPDATE tblrole
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="role.rname != null">
+				rname = #{role.rname},
+			</if>
+
+			<if test="role.rdesc != null">
+				rdesc = #{role.rdesc},
+			</if>
+
+			<if test="role.rnameZH != null">
+				rnameZH = #{role.rnameZH},
+			</if>
+
+		</trim>
+		WHERE rid = #{role.rid}
+	</update>
+
+	<delete id="deleteRole">
+		DELETE FROM tblrole WHERE rid = #{rid}
+	</delete>
+
+	<select id="countAll" resultType="java.lang.Integer">
+		SELECT COUNT(rid) FROM tblrole;
+	</select>
+
+</mapper>

@@ -17,24 +17,30 @@ public class MyCodeBuilder {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         var map = new HashMap<String, String>();
         map.put("driver", "com.mysql.cj.jdbc.Driver");
-        map.put("url", "jdbc:mysql://localhost:3306/mydb");
+        map.put("url", "jdbc:mysql://localhost:3306/lin");
         map.put("username", "root");
         map.put("password", "root");
 
         //自定义生成的类名
         var names = new HashMap<String, String>();
-        names.put("tblpermission", "permission");
+        names.put("tbldept", "dept");
+        names.put("tbldict", "dict");
+        names.put("tblemployee", "employee");
+        names.put("tblleave", "leave");
+        names.put("tbllog", "log");
+        names.put("tblnotify", "notify");
+        names.put("tblperm", "perm");
+        names.put("tblremark", "remark");
         names.put("tblrole", "role");
-        names.put("tblrolepermission", "rolepermission");
-        names.put("tbluser", "user");
-        names.put("tbluserrole", "userrole");
+        names.put("tblroleperm", "roleperm");
+
 
        new MyCodeBuilder(DriverManager.getConnection(map.get("url"), map.get("username"), map.get("password")), map)
-        .setPath("E:\\Development\\Project\\IDEA\\Java\\Summer\\src")
+        .setPath("E:\\Development\\Project\\IDEA\\Java\\mylin\\src\\main\\java")
         .setNameMapper(names)
-        .setPackageClass("priv.luzhao.pojo")
-//        .setPackageInterface("priv.luzhao.dao")
-//        .setPackageResource("priv.luzhao.resource")
+        .setPackageClass("indi.crisp.mylin.pojo")
+        .setPackageInterface("indi.crisp.mylin.dao")
+        .setPackageResource("indi.crisp.mylin.resource")
         .startBuilder();
     }
 

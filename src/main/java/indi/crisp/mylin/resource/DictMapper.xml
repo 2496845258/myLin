@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="indi.crisp.mylin.dao.DictDAO">
+
+	<select id="findDictByID" resultType="indi.crisp.mylin.pojo.Dict">
+		SELECT dtid, dkey, dvalue, did, dis FROM tbldict WHERE did = #{did}
+	</select>
+
+	<select id="findDictList" resultType="indi.crisp.mylin.pojo.Dict">
+		SELECT dtid, dkey, dvalue, did, dis FROM tbldict LIMIT #{start}, #{count}
+	</select>
+
+	<insert id="insertDict" parameterType="indi.crisp.mylin.pojo.Dict">
+		INSERT INTO tbldict (dtid, dkey, dvalue, dis) values (#{dict.dtid}, #{dict.dkey}, #{dict.dvalue}, #{dict.dis})
+	</insert>
+
+	<update id="updateDict" parameterType="indi.crisp.mylin.pojo.Dict">
+		UPDATE tbldict SET  dtid = #{dict.dtid}, dkey = #{dict.dkey}, dvalue = #{dict.dvalue}, dis = #{dict.dis} WHERE did = #{dict.did}
+	</update>
+
+	<update id="updateDictAuto" parameterType="indi.crisp.mylin.pojo.Dict">
+		UPDATE tbldict
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="dict.dtid != null">
+				dtid = #{dict.dtid},
+			</if>
+
+			<if test="dict.dkey != null">
+				dkey = #{dict.dkey},
+			</if>
+
+			<if test="dict.dvalue != null">
+				dvalue = #{dict.dvalue},
+			</if>
+
+			<if test="dict.dis != null">
+				dis = #{dict.dis},
+			</if>
+
+		</trim>
+		WHERE did = #{dict.did}
+	</update>
+
+	<delete id="deleteDict">
+		DELETE FROM tbldict WHERE did = #{did}
+	</delete>
+
+	<select id="countAll" resultType="java.lang.Integer">
+		SELECT COUNT(did) FROM tbldict;
+	</select>
+
+</mapper>
