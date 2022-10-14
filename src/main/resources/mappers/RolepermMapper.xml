@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="indi.crisp.mylin.dao.RolepermDAO">
+
+	<select id="findRolepermByID" resultType="indi.crisp.mylin.pojo.Roleperm">
+		SELECT rprid, rppid FROM tblroleperm WHERE rprid = #{rprid}
+	</select>
+
+	<select id="findRolepermList" resultType="indi.crisp.mylin.pojo.Roleperm">
+		SELECT rprid, rppid FROM tblroleperm LIMIT #{start}, #{count}
+	</select>
+
+	<insert id="insertRoleperm" parameterType="indi.crisp.mylin.pojo.Roleperm">
+		INSERT INTO tblroleperm (rppid) values (#{roleperm.rppid})
+	</insert>
+
+	<update id="updateRoleperm" parameterType="indi.crisp.mylin.pojo.Roleperm">
+		UPDATE tblroleperm SET  rppid = #{roleperm.rppid} WHERE rprid = #{roleperm.rprid}
+	</update>
+
+	<update id="updateRolepermAuto" parameterType="indi.crisp.mylin.pojo.Roleperm">
+		UPDATE tblroleperm
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="roleperm.rppid != null">
+				rppid = #{roleperm.rppid},
+			</if>
+
+		</trim>
+		WHERE rprid = #{roleperm.rprid}
+	</update>
+
+	<delete id="deleteRoleperm">
+		DELETE FROM tblroleperm WHERE rprid = #{rprid}
+	</delete>
+
+	<select id="countAll" resultType="java.lang.Integer">
+		SELECT COUNT(rprid) FROM tblroleperm;
+	</select>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="indi.crisp.mylin.dao.PermDAO">
+
+	<select id="findPermByID" resultType="indi.crisp.mylin.pojo.Perm">
+		SELECT proute, pnameZH, picon, pname, pdesc, pid FROM tblperm WHERE pid = #{pid}
+	</select>
+
+	<select id="findPermList" resultType="indi.crisp.mylin.pojo.Perm">
+		SELECT proute, pnameZH, picon, pname, pdesc, pid FROM tblperm LIMIT #{start}, #{count}
+	</select>
+
+	<insert id="insertPerm" parameterType="indi.crisp.mylin.pojo.Perm">
+		INSERT INTO tblperm (proute, pnameZH, picon, pname, pdesc) values (#{perm.proute}, #{perm.pnameZH}, #{perm.picon}, #{perm.pname}, #{perm.pdesc})
+	</insert>
+
+	<update id="updatePerm" parameterType="indi.crisp.mylin.pojo.Perm">
+		UPDATE tblperm SET  proute = #{perm.proute}, pnameZH = #{perm.pnameZH}, picon = #{perm.picon}, pname = #{perm.pname}, pdesc = #{perm.pdesc} WHERE pid = #{perm.pid}
+	</update>
+
+	<update id="updatePermAuto" parameterType="indi.crisp.mylin.pojo.Perm">
+		UPDATE tblperm
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="perm.proute != null">
+				proute = #{perm.proute},
+			</if>
+
+			<if test="perm.pnameZH != null">
+				pnameZH = #{perm.pnameZH},
+			</if>
+
+			<if test="perm.picon != null">
+				picon = #{perm.picon},
+			</if>
+
+			<if test="perm.pname != null">
+				pname = #{perm.pname},
+			</if>
+
+			<if test="perm.pdesc != null">
+				pdesc = #{perm.pdesc},
+			</if>
+
+		</trim>
+		WHERE pid = #{perm.pid}
+	</update>
+
+	<delete id="deletePerm">
+		DELETE FROM tblperm WHERE pid = #{pid}
+	</delete>
+
+	<select id="countAll" resultType="java.lang.Integer">
+		SELECT COUNT(pid) FROM tblperm;
+	</select>
+
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="indi.crisp.mylin.dao.EmployeeDAO">
+
+	<select id="findEmployeeByID" resultType="indi.crisp.mylin.pojo.Employee">
+		SELECT eloginid, ename, estatus, edept, epwd, empno, esalt, erole FROM tblemployee WHERE empno = #{empno}
+	</select>
+
+	<select id="findEmployeeList" resultType="indi.crisp.mylin.pojo.Employee">
+		SELECT eloginid, ename, estatus, edept, epwd, empno, esalt, erole FROM tblemployee LIMIT #{start}, #{count}
+	</select>
+
+	<insert id="insertEmployee" parameterType="indi.crisp.mylin.pojo.Employee">
+		INSERT INTO tblemployee (eloginid, ename, estatus, edept, epwd, esalt, erole) values (#{employee.eloginid}, #{employee.ename}, #{employee.estatus}, #{employee.edept}, #{employee.epwd}, #{employee.esalt}, #{employee.erole})
+	</insert>
+
+	<update id="updateEmployee" parameterType="indi.crisp.mylin.pojo.Employee">
+		UPDATE tblemployee SET  eloginid = #{employee.eloginid}, ename = #{employee.ename}, estatus = #{employee.estatus}, edept = #{employee.edept}, epwd = #{employee.epwd}, esalt = #{employee.esalt}, erole = #{employee.erole} WHERE empno = #{employee.empno}
+	</update>
+
+	<update id="updateEmployeeAuto" parameterType="indi.crisp.mylin.pojo.Employee">
+		UPDATE tblemployee
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="employee.eloginid != null">
+				eloginid = #{employee.eloginid},
+			</if>
+
+			<if test="employee.ename != null">
+				ename = #{employee.ename},
+			</if>
+
+			<if test="employee.estatus != null">
+				estatus = #{employee.estatus},
+			</if>
+
+			<if test="employee.edept != null">
+				edept = #{employee.edept},
+			</if>
+
+			<if test="employee.epwd != null">
+				epwd = #{employee.epwd},
+			</if>
+
+			<if test="employee.esalt != null">
+				esalt = #{employee.esalt},
+			</if>
+
+			<if test="employee.erole != null">
+				erole = #{employee.erole},
+			</if>
+
+		</trim>
+		WHERE empno = #{employee.empno}
+	</update>
+
+	<delete id="deleteEmployee">
+		DELETE FROM tblemployee WHERE empno = #{empno}
+	</delete>
+
+	<select id="countAll" resultType="java.lang.Integer">
+		SELECT COUNT(empno) FROM tblemployee;
+	</select>
+
+</mapper>

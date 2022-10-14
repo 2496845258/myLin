@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="indi.crisp.mylin.dao.LogDAO">
+
+	<select id="findLogByID" resultType="indi.crisp.mylin.pojo.Log">
+		SELECT ltime, ldname, lrole, lid, linfo, lename, ldesc, ltype FROM tbllog WHERE lid = #{lid}
+	</select>
+
+	<select id="findLogList" resultType="indi.crisp.mylin.pojo.Log">
+		SELECT ltime, ldname, lrole, lid, linfo, lename, ldesc, ltype FROM tbllog LIMIT #{start}, #{count}
+	</select>
+
+	<insert id="insertLog" parameterType="indi.crisp.mylin.pojo.Log">
+		INSERT INTO tbllog (ltime, ldname, lrole, linfo, lename, ldesc, ltype) values (#{log.ltime}, #{log.ldname}, #{log.lrole}, #{log.linfo}, #{log.lename}, #{log.ldesc}, #{log.ltype})
+	</insert>
+
+	<update id="updateLog" parameterType="indi.crisp.mylin.pojo.Log">
+		UPDATE tbllog SET  ltime = #{log.ltime}, ldname = #{log.ldname}, lrole = #{log.lrole}, linfo = #{log.linfo}, lename = #{log.lename}, ldesc = #{log.ldesc}, ltype = #{log.ltype} WHERE lid = #{log.lid}
+	</update>
+
+	<update id="updateLogAuto" parameterType="indi.crisp.mylin.pojo.Log">
+		UPDATE tbllog
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="log.ltime != null">
+				ltime = #{log.ltime},
+			</if>
+
+			<if test="log.ldname != null">
+				ldname = #{log.ldname},
+			</if>
+
+			<if test="log.lrole != null">
+				lrole = #{log.lrole},
+			</if>
+
+			<if test="log.linfo != null">
+				linfo = #{log.linfo},
+			</if>
+
+			<if test="log.lename != null">
+				lename = #{log.lename},
+			</if>
+
+			<if test="log.ldesc != null">
+				ldesc = #{log.ldesc},
+			</if>
+
+			<if test="log.ltype != null">
+				ltype = #{log.ltype},
+			</if>
+
+		</trim>
+		WHERE lid = #{log.lid}
+	</update>
+
+	<delete id="deleteLog">
+		DELETE FROM tbllog WHERE lid = #{lid}
+	</delete>
+
+	<select id="countAll" resultType="java.lang.Integer">
+		SELECT COUNT(lid) FROM tbllog;
+	</select>
+
+</mapper>
