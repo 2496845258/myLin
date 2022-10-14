@@ -277,6 +277,7 @@ public class AllServlet extends HttpServlet {
             // 返回格式为Json格式
             case "Json" :
             case "Text" : {
+                resp.setContentType("text/html;charset=UTF-8");
                 PrintWriter writer = resp.getWriter();
                 writer.println(msg);
                 writer.flush();

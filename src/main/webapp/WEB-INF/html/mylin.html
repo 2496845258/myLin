@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>业务页面</title>
+</head>
+<body>
+    <img src="../img/">
+    <div>
+        <dl id="xxx">
+
+        </dl>
+    </div>
+
+  <script>
+
+
+        longin()
+        function longin() {
+            business = new XMLHttpRequest()
+            business.open("GET","/mylin/hello/business",true)
+            business.send();
+            var count = 0;
+            business.onreadystatechange = function () {
+                if (this.status == 200){
+                    var str = business.responseText;
+                    if (null != str && str.length != 0){
+                        var t = JSON.parse(business.responseText)
+                        if (null != t.perm && t.perm.length != 0 && count == 0){
+                            for (var i = 0; i < t.perm.length; i++){
+                                var newdt = document.createElement("dt")
+                                var newbutton  = document.createElement("button")
+                                newbutton.innerText = t.perm[i]
+                                newbutton.addEventListener("click", function () {
+                                    console.log(this.innerText)
+                                })
+                                newdt.appendChild(newbutton)
+                                document.querySelector("div dl").appendChild(newdt)
+                                count = 1;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        function tx() {
+            tx = new XMLHttpRequest()
+            tx.open("GET","/mylin/hello/tx",true)
+            tx.send();
+            tx.onreadystatechange = function () {
+                if (this.status == 200){
+                    var str = business.responseText;
+                    if (null != str && str.length != 0){
+                        document.querySelector("img").src = ""
+                    }
+                }
+            }
+        }
+
+  </script>
+</body>
+</html>

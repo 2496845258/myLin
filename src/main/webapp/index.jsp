@@ -5,9 +5,9 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+    <h1>首页</h1>
+    <a href="hello/skiplogin">登录</a>
+    <a href="hello/skipregister">注册</a>
+
 </body>
 </html>
