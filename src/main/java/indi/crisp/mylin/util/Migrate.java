@@ -12,6 +12,9 @@ public class Migrate {
         for ( var mothed : source.getClass().getMethods() ) {
             if ( mothed.getName().matches("get.*") ) {
                 var t1 = mothed.getName().substring(3);
+                if (t1.equals("Class")){
+                    continue;
+                }
                 try {
                     var t2 = target.getClass().getMethod("set"+t1, mothed.getReturnType());
                     t2.invoke(target, mothed.invoke(source));

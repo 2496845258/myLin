@@ -1,11 +1,18 @@
 package indi.crisp.mylin.pojo.expand;
 
 import indi.crisp.mylin.pojo.Employee;
+import indi.crisp.mylin.pojo.Perm;
+import indi.crisp.mylin.pojo.Role;
+
 import java.lang.Integer;
 import java.lang.String;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class EmployeeVO extends Employee {
+
+	private Role role;
+	private List<Perm> permList;
 
 
 	public EmployeeVO() {
@@ -23,4 +30,36 @@ public class EmployeeVO extends Employee {
 		 this.erole = erole;
 	}
 
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public List<Perm> getPermList() {
+		return permList;
+	}
+
+	public void setPermList(List<Perm> permList) {
+		this.permList = permList;
+	}
+
+	@Override
+	public String toString() {
+		return "EmployeeVO{" +
+				"role=" + role +
+				", permList=" + permList +
+				", eloginid='" + eloginid + '\'' +
+				", ename='" + ename + '\'' +
+				", estatus=" + estatus +
+				", edept=" + edept +
+				", epwd='" + epwd + '\'' +
+				", elasttime=" + elasttime +
+				", empno=" + empno +
+				", esalt='" + esalt + '\'' +
+				", erole=" + erole +
+				'}';
+	}
 }

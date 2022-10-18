@@ -4,6 +4,7 @@ import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.pojo.Employee;
 import indi.crisp.mylin.pojo.expand.EmployeeVO;
 import indi.crisp.mylin.util.Feedback;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author luzhaoya@qq.com
@@ -27,6 +28,5 @@ public interface EmployeeService {
      */
     Feedback<Employee> login(String account, String password) throws AppAbnormal;
 
-    // 根据账号查找员工
-    Employee findEmployeebyAccount(String account) throws  AppAbnormal;
+
 }

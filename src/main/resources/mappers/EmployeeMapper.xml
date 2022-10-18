@@ -13,6 +13,10 @@
 		SELECT eloginid, ename, estatus, edept, epwd, elasttime, empno, esalt, erole FROM tblemployee LIMIT #{start}, #{count}
 	</select>
 
+	<select id="findEmployeebyAccount" resultType="indi.crisp.mylin.pojo.Employee">
+		SELECT eloginid, ename, estatus, edept, epwd, elasttime, empno, esalt, erole FROM tblemployee WHERE eloginid = #{account}
+	</select>
+
 	<insert id="insertEmployee" parameterType="indi.crisp.mylin.pojo.Employee">
 		INSERT INTO tblemployee (eloginid, ename, estatus, edept, epwd, elasttime, esalt, erole) values (#{employee.eloginid}, #{employee.ename}, #{employee.estatus}, #{employee.edept}, #{employee.epwd}, #{employee.elasttime}, #{employee.esalt}, #{employee.erole})
 	</insert>

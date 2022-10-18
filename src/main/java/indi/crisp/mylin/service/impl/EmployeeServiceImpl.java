@@ -3,9 +3,14 @@ package indi.crisp.mylin.service.impl;
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.config.AppEnum;
 import indi.crisp.mylin.dao.EmployeeDAO;
+import indi.crisp.mylin.dao.PermDAO;
+import indi.crisp.mylin.dao.RoleDAO;
 import indi.crisp.mylin.pojo.Employee;
+import indi.crisp.mylin.pojo.expand.EmployeeVO;
+import indi.crisp.mylin.pojo.expand.PermVO;
 import indi.crisp.mylin.service.EmployeeService;
 import indi.crisp.mylin.util.Feedback;
+import indi.crisp.mylin.util.Migrate;
 import indi.crisp.mylin.util.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.util.DigestUtils;
@@ -45,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeDAO dao = session.getMapper(EmployeeDAO.class);
 
         // 判断账号是否存在
-        if (null != findEmployeebyAccount(account)){
+        if (null != dao.findEmployeebyAccount(account)){
             return AppEnum.EMPLOYEE_ACCOUNT_SAME.getCode();
         }
         try {
@@ -89,17 +94,39 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (null == password){
             throw  new AppAbnormal(AppEnum.ERROR_PASSWORD_NULL);
         }
+        SqlSession session = MybatisUtil.getSqlSession();
+        EmployeeDAO employeeDAO = session.getMapper(EmployeeDAO.class);
+        EmployeeVO employeeVO = new EmployeeVO();
+        RoleDAO roleDAO = session.getMapper(RoleDAO.class);
+        PermDAO permDAO = session.getMapper(PermDAO.class);
 
         // 判断账号是否存在
-        if (true){
-
+        if (null == employeeDAO.findEmployeebyAccount(account)){
+            return new Feedback<>().setStatusCode(AppEnum.EMPLOYEE_ACCOUNT_NULL.getCode());
         }
 
-        return null;
+
+        try {
+            Employee employee = employeeDAO.findEmployeebyAccount(account);
+            // 员工离职
+            if (employee.getEstatus() == 1202){
+                return new Feedback<>().setStatusCode(AppEnum.EMPLOYEE_LEAVE.getCode());
+            }
+            // 密码错误
+            if (!employee.getEpwd().equals(DigestUtils.md5DigestAsHex((password+employee.getEsalt()).getBytes()))){
+                return new Feedback<>().setStatusCode(AppEnum.EMPLOYEE_PASSWORD_WRONG.getCode());
+            }
+
+            Migrate.change(employee,employeeVO);
+            employeeVO.setRole(roleDAO.findEmpnoRole(employeeVO.getEmpno()));
+            employeeVO.setPermList(permDAO.findEmpnoList(employee.getErole()));
+            return new Feedback<>().setResult(employeeVO).setStatusCode(AppEnum.EMPLOYEE_LOGIN_YES.getCode());
+
+        }finally {
+           session.close();
+        }
+
     }
 
-    @Override
-    public Employee findEmployeebyAccount(String account) throws AppAbnormal {
-        return null;
-    }
+
 }

@@ -12,8 +12,14 @@ public enum AppEnum {
     REMARK_UPDATE_NO(1006, "更新便签失败, 原因可能是找不到需要删除的便签"),
 
     EMPLOYEE_ACCOUNT_SAME(1007,"该账号已被注册"),
-    EMPLOYEE_REGISTER_YES(1008,"注册成功"),
-    EMPLOYEE_REGISTER_NO(1009,"注册失败"),
+    EMPLOYEE_ACCOUNT_NULL(1008,"该账号不存在"),
+    EMPLOYEE_REGISTER_YES(1009,"注册成功"),
+    EMPLOYEE_REGISTER_NO(1010,"注册失败"),
+
+    EMPLOYEE_LOGIN_YES(1009,"登录成功"),
+    EMPLOYEE_LOGIN_NO(1010,"登录失败"),
+    EMPLOYEE_LEAVE(1011,"员工已离职"),
+    EMPLOYEE_PASSWORD_WRONG(1012,"密码错误"),
 
 
 
