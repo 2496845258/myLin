@@ -11,7 +11,7 @@ public class DeptVO extends Dept {
 	public DeptVO() {
 	}
 
-	public DeptVO(Integer dno, Timestamp dcreate, String ddesc, Integer dstatus, String dname, String dhost) {
+	public DeptVO(Integer dno, Timestamp dcreate, String ddesc, Integer dstatus, String dname, Integer dhost) {
 		 this.dno = dno;
 		 this.dcreate = dcreate;
 		 this.ddesc = ddesc;

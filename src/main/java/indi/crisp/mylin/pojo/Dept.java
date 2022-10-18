@@ -11,12 +11,13 @@ public class Dept {
 	protected String ddesc;
 	protected Integer dstatus;
 	protected String dname;
-	protected String dhost;
+
+	protected Integer dhost;
 
 	public Dept() {
 	}
 
-	public Dept(Integer dno, Timestamp dcreate, String ddesc, Integer dstatus, String dname, String dhost) {
+	public Dept(Integer dno, Timestamp dcreate, String ddesc, Integer dstatus, String dname, Integer dhost) {
 		 this.dno = dno;
 		 this.dcreate = dcreate;
 		 this.ddesc = ddesc;
@@ -65,12 +66,11 @@ public class Dept {
 		 this.dname = dname;
 	}
 
-	public String getDhost() {
-		return this.dhost;
+	public Integer getDhost() {
+		return dhost;
 	}
 
-	public void setDhost(String dhost) {
-		 this.dhost = dhost;
+	public void setDhost(Integer dhost) {
+		this.dhost = dhost;
 	}
-
 }

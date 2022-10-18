@@ -11,7 +11,7 @@ public class DeptPO extends Dept {
 	public DeptPO() {
 	}
 
-	public DeptPO(Integer dno, Timestamp dcreate, String ddesc, Integer dstatus, String dname, String dhost) {
+	public DeptPO(Integer dno, Timestamp dcreate, String ddesc, Integer dstatus, String dname, Integer dhost) {
 		 this.dno = dno;
 		 this.dcreate = dcreate;
 		 this.ddesc = ddesc;
