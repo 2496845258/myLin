@@ -27,6 +27,8 @@ public enum AppEnum {
     DEPT_UPDATE_NO(1016,"部门更新失败"),
     DEPT_FIND_YES(1017,"部门查询成功"),
     DEPT_FIND_NO(1018,"部门查询失败"),
+    PERM_FIND_YES(1019,"权限查询成功"),
+    PERM_FIND_NO(1020,"权限查询失败"),
 
 
 
@@ -36,6 +38,7 @@ public enum AppEnum {
     ERROR_DEPT_NULL(2104, "新增部门为空"),
     ERROR_DEPT_ID(2105,"部门编号异常"),
     ERROR_DEPT_FINDLIST(2106,"部门分页查询，条件异常"),
+    ERROR_ROLE_ID(2107, "角色id异常"),
     TEST(0001, "测试"),
     ;
 

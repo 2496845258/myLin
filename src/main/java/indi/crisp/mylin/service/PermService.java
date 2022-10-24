@@ -2,6 +2,8 @@ package indi.crisp.mylin.service;
 
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.pojo.Perm;
+import indi.crisp.mylin.util.Feedback;
+import indi.crisp.mylin.util.Paginate;
 
 /**
  * @author luzhaoya@qq.com
@@ -10,7 +12,11 @@ import indi.crisp.mylin.pojo.Perm;
  * 权限的操作是需要记录到数据库中
  */
 public interface PermService {
-    int insertPerm(Perm perm) throws AppAbnormal;
-    int deletePerm(int pid) throws AppAbnormal;
-    int updatePerm(Perm perm) throws AppAbnormal;
+    /**
+     * 根据角色id查询对应的权限
+     * @param rid
+     * @return
+     * @throws AppAbnormal
+     */
+    Feedback<Paginate<Perm>> findPermByRoleID(int rid) throws AppAbnormal;
 }
