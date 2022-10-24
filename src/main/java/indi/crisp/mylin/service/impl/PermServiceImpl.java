@@ -22,7 +22,8 @@ public class PermServiceImpl implements PermService {
             var permDAO = session.getMapper(PermDAO.class);
             var count = permDAO.countAll();
             var permList = permDAO.findEmpnoList(rid);
-            return new Feedback<>().setStatusCode(AppEnum.PERM_FIND_YES.getCode()).setResult(new Paginate<Perm>().setList(permList));
+            return new Feedback<>().setStatusCode(AppEnum.PERM_FIND_YES.getCode()).setResult(
+                    new Paginate<Perm>().setList(permList).setCountAll(count));
         } finally {
             session.close();
         }
