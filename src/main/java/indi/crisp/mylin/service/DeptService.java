@@ -3,6 +3,8 @@ package indi.crisp.mylin.service;
 
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.pojo.Dept;
+import indi.crisp.mylin.util.Feedback;
+import indi.crisp.mylin.util.Paginate;
 
 /**
  * @author luzhaoya@qq.com
@@ -35,4 +37,16 @@ public interface DeptService {
      * @throws AppAbnormal
      */
     int updateDept(Dept dept) throws AppAbnormal;
+
+    /**
+     * 分页查看部门信息
+     * @param start
+     * @param limit
+     * @return
+     * @throws AppAbnormal
+     */
+    Feedback<Paginate<Dept>> findList(int start, int limit) throws AppAbnormal;
+
+    Feedback<Dept> findDept(int id) throws AppAbnormal;
+
 }

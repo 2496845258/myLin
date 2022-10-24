@@ -21,15 +21,23 @@ public enum AppEnum {
     EMPLOYEE_LEAVE(1011,"员工已离职"),
     EMPLOYEE_PASSWORD_WRONG(1012,"密码错误"),
 
-
-
+    DEPT_INSERT_YES(1013,"新增部门成功"),
+    DEPT_INSERT_NO(1014,"新增部门失败"),
+    DEPT_UPDATE_YES(1015,"部门更新成功"),
+    DEPT_UPDATE_NO(1016,"部门更新失败"),
+    DEPT_FIND_YES(1017,"部门查询成功"),
+    DEPT_FIND_NO(1018,"部门查询失败"),
 
 
 
     ERROR_REMARK_NULL(2101, "需要持久化的便签为空"),
     ERROR_ACCOUNT_NULL(2102,"账号为空"),
     ERROR_PASSWORD_NULL(2103,"密码为空"),
-    TEST(0001, "测试");
+    ERROR_DEPT_NULL(2104, "新增部门为空"),
+    ERROR_DEPT_ID(2105,"部门编号异常"),
+    ERROR_DEPT_FINDLIST(2106,"部门分页查询，条件异常"),
+    TEST(0001, "测试"),
+    ;
 
     private int code;
     private String describe;
