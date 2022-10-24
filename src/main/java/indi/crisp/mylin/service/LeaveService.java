@@ -43,5 +43,25 @@ public interface LeaveService {
      * @return
      * @throws AppAbnormal
      */
-    Feedback<Paginate<Leave>> findList(int eid) throws AppAbnormal;
+    Feedback<Paginate<Leave>> findEmpList(int eid, int start, int limit) throws AppAbnormal;
+
+    /**
+     * 分页查看一个部门的请假信息
+     * @param did
+     * @param start
+     * @param limit
+     * @return
+     * @throws AppAbnormal
+     */
+    Feedback<Paginate<Leave>> findDeptLeave(int did, int start, int limit) throws AppAbnormal;
+
+    /**
+     * 根据审批人来查看自己的申请
+     * @param tid
+     * @param start
+     * @param limit
+     * @return
+     * @throws AppAbnormal
+     */
+    Feedback<Paginate<Leave>> findToId(int tid, int start, int limit) throws AppAbnormal;
 }

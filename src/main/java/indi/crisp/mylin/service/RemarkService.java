@@ -3,6 +3,7 @@ package indi.crisp.mylin.service;
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.pojo.Remark;
 import indi.crisp.mylin.util.Feedback;
+import indi.crisp.mylin.util.Paginate;
 
 /**
  * @author luzhaoya@qq.com
@@ -44,5 +45,5 @@ public interface RemarkService {
      * @return
      * @throws AppAbnormal
      */
-    Feedback<Remark> findRemarkList(int index, int step) throws AppAbnormal;
+    Feedback<Paginate<Remark>> findRemarkList(int index, int step) throws AppAbnormal;
 }

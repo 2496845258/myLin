@@ -11,7 +11,7 @@ public class NotifyPO extends Notify {
 	public NotifyPO() {
 	}
 
-	public NotifyPO(String ninfo, String nfrom, Integer nid, String nto, Integer nstatus, String ntype, Timestamp ntime) {
+	public NotifyPO(String ninfo, Integer nfrom, Integer nid, Integer nto, Integer nstatus, String ntype, Timestamp ntime) {
 		 this.ninfo = ninfo;
 		 this.nfrom = nfrom;
 		 this.nid = nid;

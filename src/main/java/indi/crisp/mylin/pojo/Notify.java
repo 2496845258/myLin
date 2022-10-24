@@ -7,9 +7,9 @@ import java.sql.Timestamp;
 public class Notify {
 
 	protected String ninfo;
-	protected String nfrom;
+	protected Integer nfrom;
 	protected Integer nid;
-	protected String nto;
+	protected Integer nto;
 	protected Integer nstatus;
 	protected String ntype;
 	protected Timestamp ntime;
@@ -17,7 +17,7 @@ public class Notify {
 	public Notify() {
 	}
 
-	public Notify(String ninfo, String nfrom, Integer nid, String nto, Integer nstatus, String ntype, Timestamp ntime) {
+	public Notify(String ninfo, Integer nfrom, Integer nid, Integer nto, Integer nstatus, String ntype, Timestamp ntime) {
 		 this.ninfo = ninfo;
 		 this.nfrom = nfrom;
 		 this.nid = nid;
@@ -35,13 +35,6 @@ public class Notify {
 		 this.ninfo = ninfo;
 	}
 
-	public String getNfrom() {
-		return this.nfrom;
-	}
-
-	public void setNfrom(String nfrom) {
-		 this.nfrom = nfrom;
-	}
 
 	public Integer getNid() {
 		return this.nid;
@@ -51,12 +44,17 @@ public class Notify {
 		 this.nid = nid;
 	}
 
-	public String getNto() {
-		return this.nto;
+
+	public void setNfrom(Integer nfrom) {
+		this.nfrom = nfrom;
 	}
 
-	public void setNto(String nto) {
-		 this.nto = nto;
+	public Integer getNto() {
+		return nto;
+	}
+
+	public void setNto(Integer nto) {
+		this.nto = nto;
 	}
 
 	public Integer getNstatus() {

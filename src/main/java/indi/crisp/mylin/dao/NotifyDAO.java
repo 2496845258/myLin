@@ -13,4 +13,6 @@ public interface NotifyDAO {
 	Integer updateNotifyAuto(@Param("notify") Notify notify);
 	Integer deleteNotify(@Param("nid") int nid);
 	Integer countAll();
+
+	List<Notify> findByEmpID(@Param("fid") int fid, @Param("tid") int tid, @Param("start") int start, @Param("count") int count );
 }

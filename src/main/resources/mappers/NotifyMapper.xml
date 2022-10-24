@@ -60,4 +60,11 @@
 		SELECT COUNT(nid) FROM tblnotify;
 	</select>
 
+	<select id="findByEmpID" resultType="indi.crisp.mylin.pojo.Notify">
+		SELECT nid, nfrom, nto, ninfo, ntime, ntype, nstatus
+		FROM tblnotify
+		WHERE nfrom = #{fid} AND nto = #{tid}
+		LIMIT #{start}, #{count};
+	</select>
+
 </mapper>

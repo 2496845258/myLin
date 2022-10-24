@@ -60,7 +60,7 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public Feedback<Paginate<Dept>> findList(int start, int limit) throws AppAbnormal {
         if ( start < 1 || limit < 1 ) {
-            throw new AppAbnormal(AppEnum.ERROR_DEPT_FINDLIST);
+            throw new AppAbnormal(AppEnum.ERROR_DEPT_FIND_LIST);
         }
         var session = MybatisUtil.getSqlSession();
         try {
@@ -68,7 +68,7 @@ public class DeptServiceImpl implements DeptService {
             var count = deptDAO.countAll();
             var deptList = deptDAO.findDeptList(start,limit);
             return new Feedback<>().setResult(new Paginate<Dept>()
-                    .setList(deptList).setCountAll(count).setIndex(start).setStep(limit))
+                    .setList(deptList).setCountAll(count).setIndex(start).setStep(deptList.size()))
                     .setStatusCode(AppEnum.DEPT_FIND_YES.getCode());
         } finally {
             session.close();

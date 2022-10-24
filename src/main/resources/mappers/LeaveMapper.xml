@@ -72,4 +72,25 @@
 		SELECT COUNT(vid) FROM tblleave;
 	</select>
 
+	<select id="findEmpIdList" resultType="indi.crisp.mylin.pojo.Leave">
+		SELECT vid, vfrom, vreason, vstart, vend, vtime, vtype, vstatus, vto, vcheck
+		FROM tblleave
+		WHERE vfrom = #{eid}
+		LIMIT #{start}, #{count};
+	</select>
+
+	<select id="findDeptLeave" resultType="indi.crisp.mylin.pojo.Leave">
+		SELECT vid, vfrom, vreason, vstart, vend, vtime, vtype, vstatus, vto, vcheck
+		FROM ((tbldept INNER JOIN tblemployee ON dno = tblemployee.edept) JOIN tblleave ON vfrom = tblemployee.empno)
+		WHERE dno = #{did}
+		LIMIT #{start}, #{count};
+	</select>
+
+	<select id="findToId" resultType="indi.crisp.mylin.pojo.Leave">
+		SELECT vid, vfrom, vreason, vstart, vend, vtime, vtype, vstatus, vto, vcheck
+		FROM tblleave
+		WHERE vto = #{tid}
+		LIMIT 0, 10;
+	</select>
+
 </mapper>

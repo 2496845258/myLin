@@ -15,7 +15,7 @@ public class PermServiceImpl implements PermService {
     @Override
     public Feedback<Paginate<Perm>> findPermByRoleID(int rid) throws AppAbnormal {
         if ( rid < 1 ) {
-            throw new AppAbnormal(AppEnum.ERROR_DEPT_FINDLIST);
+            throw new AppAbnormal(AppEnum.ERROR_DEPT_FIND_LIST);
         }
         var session = MybatisUtil.getSqlSession();
         try {

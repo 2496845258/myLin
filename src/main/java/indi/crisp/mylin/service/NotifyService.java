@@ -27,7 +27,7 @@ public interface NotifyService {
      * @return
      * @throws AppAbnormal
      */
-    Feedback<Notify> findByEmpID(int eid1, int eid2) throws AppAbnormal;
+    Feedback<Paginate<Notify>> findByEmpID(int eid1, int eid2, int index, int step) throws AppAbnormal;
 
     /**
      * 分页查看全部人的所有消息

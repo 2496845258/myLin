@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 public class Leave {
 
 	protected Integer vid;
-	protected String vto;
+	protected Integer vto;
 	protected Timestamp vend;
 	protected String vtype;
 	protected Integer vstatus;
@@ -20,7 +20,7 @@ public class Leave {
 	public Leave() {
 	}
 
-	public Leave(Integer vid, String vto, Timestamp vend, String vtype, Integer vstatus, Timestamp vtime, Timestamp vstart, String vcheck, Integer vfrom, String vreason) {
+	public Leave(Integer vid, Integer vto, Timestamp vend, String vtype, Integer vstatus, Timestamp vtime, Timestamp vstart, String vcheck, Integer vfrom, String vreason) {
 		 this.vid = vid;
 		 this.vto = vto;
 		 this.vend = vend;
@@ -41,12 +41,12 @@ public class Leave {
 		 this.vid = vid;
 	}
 
-	public String getVto() {
-		return this.vto;
+	public Integer getVto() {
+		return vto;
 	}
 
-	public void setVto(String vto) {
-		 this.vto = vto;
+	public void setVto(Integer vto) {
+		this.vto = vto;
 	}
 
 	public Timestamp getVend() {

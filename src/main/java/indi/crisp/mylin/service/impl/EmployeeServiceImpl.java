@@ -21,21 +21,40 @@ import java.util.UUID;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
-
-
     @Override
     public int insertEmployee(Employee employee) throws AppAbnormal {
-        return 0;
-    }
-
-    @Override
-    public int deleteEmployee(int empno) throws AppAbnormal {
-        return 0;
+        if ( employee == null ) {
+            throw new AppAbnormal(AppEnum.ERROR_EMP_NULL);
+        }
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var employeeDAO = session.getMapper(EmployeeDAO.class);
+            if ( employeeDAO.insertEmployee(employee) > 0 ) {
+                session.commit();
+                return AppEnum.EMP_INSERT_YES.getCode();
+            }
+            return AppEnum.EMP_INSERT_NO.getCode();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public int updateEmployee(Employee employee) throws AppAbnormal {
-        return 0;
+        if ( employee == null ) {
+            throw new AppAbnormal(AppEnum.ERROR_EMP_NULL);
+        }
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var employeeDAO = session.getMapper(EmployeeDAO.class);
+            if ( employeeDAO.updateEmployeeAuto(employee) > 0 ) {
+                session.commit();
+                return AppEnum.EMP_UPDATE_YES.getCode();
+            }
+            return AppEnum.EMP_UPDATE_NO.getCode();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
@@ -127,6 +146,22 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
     }
-
+    @Override
+    public Feedback<Employee> findEmpByID(int eid) throws AppAbnormal {
+        if ( eid < 0 ) {
+            throw new AppAbnormal(AppEnum.ERROR_EMP_FIND_ID);
+        }
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var employeeDAO = session.getMapper(EmployeeDAO.class);
+            var employee = employeeDAO.findEmployeeByID(eid);
+            if ( employee == null ) {
+                return new Feedback<>().setStatusCode(AppEnum.EMP_FIND_ID_NO.getCode());
+            }
+            return new Feedback<>().setResult(employee).setStatusCode(AppEnum.EMP_FIND_ID_YES.getCode());
+        } finally {
+            session.close();
+        }
+    }
 
 }

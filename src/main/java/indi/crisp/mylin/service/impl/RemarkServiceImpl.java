@@ -7,6 +7,7 @@ import indi.crisp.mylin.pojo.Remark;
 import indi.crisp.mylin.service.RemarkService;
 import indi.crisp.mylin.util.Feedback;
 import indi.crisp.mylin.util.MybatisUtil;
+import indi.crisp.mylin.util.Paginate;
 
 public class RemarkServiceImpl implements RemarkService {
     @Override
@@ -65,8 +66,17 @@ public class RemarkServiceImpl implements RemarkService {
     }
 
     @Override
-    public Feedback<Remark> findRemarkList(int index, int step) throws AppAbnormal {
-        //需要缓存，来存储个人便签的个数。查询不可能每次都走数据库的
-        return null;
+    public Feedback<Paginate<Remark>> findRemarkList(int index, int step) throws AppAbnormal {
+        if ( index < 0 || step < 0 ) {
+            throw new AppAbnormal(AppEnum.ERROR_REMARK_FIND_LIST);
+        }
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var remarkDAO = session.getMapper(RemarkDAO.class);
+            var remarks = remarkDAO.findRemarkList(index,step);
+            return new Feedback<Paginate<Remark>>().setResult(new Paginate<Remark>().setList(remarks).setStep(remarks.size()).setIndex(index));
+        } finally {
+            session.close();
+        }
     }
 }

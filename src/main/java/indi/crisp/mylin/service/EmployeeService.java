@@ -14,7 +14,6 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface EmployeeService {
     int insertEmployee(Employee employee) throws AppAbnormal;
-    int deleteEmployee(int empno) throws AppAbnormal;
     int updateEmployee(Employee employee) throws AppAbnormal;
 
     int register(String account, String password) throws AppAbnormal;
@@ -28,5 +27,11 @@ public interface EmployeeService {
      */
     Feedback<Employee> login(String account, String password) throws AppAbnormal;
 
-
+    /**
+     * 根据员工id查看员工信息
+     * @param eid
+     * @return
+     * @throws AppAbnormal
+     */
+    Feedback<Employee> findEmpByID(int eid) throws AppAbnormal;
 }

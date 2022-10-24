@@ -3,6 +3,7 @@ package indi.crisp.mylin.service;
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.pojo.Log;
 import indi.crisp.mylin.util.Feedback;
+import indi.crisp.mylin.util.Paginate;
 
 /**
  * @author luzhaoya@qq.com
@@ -26,5 +27,5 @@ public interface LogService {
      * @return
      * @throws AppAbnormal
      */
-    Feedback<Log> findLogList(int index, int step) throws AppAbnormal;
+    Feedback<Paginate<Log>> findLogList(int index, int step) throws AppAbnormal;
 }
