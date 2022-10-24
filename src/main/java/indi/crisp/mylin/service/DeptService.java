@@ -23,7 +23,7 @@ public interface DeptService {
     int insertDept(Dept dept) throws AppAbnormal;
 
     /**
-     * 解锁部门
+     * 遣散部门
      * @param dno
      * @return
      * @throws AppAbnormal
@@ -47,6 +47,12 @@ public interface DeptService {
      */
     Feedback<Paginate<Dept>> findList(int start, int limit) throws AppAbnormal;
 
+    /**
+     * 查看一个部门的信息
+     * @param id
+     * @return
+     * @throws AppAbnormal
+     */
     Feedback<Dept> findDept(int id) throws AppAbnormal;
 
 }

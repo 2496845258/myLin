@@ -52,4 +52,10 @@
 		SELECT COUNT(did) FROM tbldict;
 	</select>
 
+	<select id="findByKey" resultType="indi.crisp.mylin.pojo.Dict">
+		SELECT did, dtid, dkey, dvalue, dis
+		FROM tbldict
+		WHERE dkey = #{key};
+	</select>
+
 </mapper>

@@ -14,13 +14,13 @@ public class Leave {
 	protected Timestamp vtime;
 	protected Timestamp vstart;
 	protected String vcheck;
-	protected String vfrom;
+	protected Integer vfrom;
 	protected String vreason;
 
 	public Leave() {
 	}
 
-	public Leave(Integer vid, String vto, Timestamp vend, String vtype, Integer vstatus, Timestamp vtime, Timestamp vstart, String vcheck, String vfrom, String vreason) {
+	public Leave(Integer vid, String vto, Timestamp vend, String vtype, Integer vstatus, Timestamp vtime, Timestamp vstart, String vcheck, Integer vfrom, String vreason) {
 		 this.vid = vid;
 		 this.vto = vto;
 		 this.vend = vend;
@@ -97,12 +97,12 @@ public class Leave {
 		 this.vcheck = vcheck;
 	}
 
-	public String getVfrom() {
-		return this.vfrom;
+	public Integer getVfrom() {
+		return vfrom;
 	}
 
-	public void setVfrom(String vfrom) {
-		 this.vfrom = vfrom;
+	public void setVfrom(Integer vfrom) {
+		this.vfrom = vfrom;
 	}
 
 	public String getVreason() {

@@ -8,7 +8,7 @@ import indi.crisp.mylin.util.Feedback;
  * @author luzhaoya@qq.com
  * @time 2022-10-14 15:27
  * 日志记录相关的业务接口，
- * 日志的操作是需要记录到数据库中
+ * 日志的操作只能新增和查询
  */
 public interface LogService {
     /**

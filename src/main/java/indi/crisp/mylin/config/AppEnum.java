@@ -29,7 +29,8 @@ public enum AppEnum {
     DEPT_FIND_NO(1018,"部门查询失败"),
     PERM_FIND_YES(1019,"权限查询成功"),
     PERM_FIND_NO(1020,"权限查询失败"),
-
+    DICT_FIND_YES(1021, "字典表查询成功"),
+    DICT_FIND_NO(1022, "字典表查询失败"),
 
 
     ERROR_REMARK_NULL(2101, "需要持久化的便签为空"),
@@ -39,6 +40,7 @@ public enum AppEnum {
     ERROR_DEPT_ID(2105,"部门编号异常"),
     ERROR_DEPT_FINDLIST(2106,"部门分页查询，条件异常"),
     ERROR_ROLE_ID(2107, "角色id异常"),
+    ERROR_DICT_ID(2108, "字典表查询id异常"),
     TEST(0001, "测试"),
     ;
 

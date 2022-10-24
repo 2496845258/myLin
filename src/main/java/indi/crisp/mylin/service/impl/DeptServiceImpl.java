@@ -30,7 +30,13 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public int deleteDept(int dno) throws AppAbnormal {
-        return 0;
+        if ( dno < 0 ) {
+            throw new AppAbnormal(AppEnum.ERROR_DEPT_ID);
+        }
+        var dept = new Dept();
+        dept.setDno(dno);
+        dept.setDstatus(1102); //标记为解散状态
+        return updateDept(dept);
     }
 
     @Override

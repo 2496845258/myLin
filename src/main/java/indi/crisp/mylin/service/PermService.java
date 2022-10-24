@@ -9,7 +9,7 @@ import indi.crisp.mylin.util.Paginate;
  * @author luzhaoya@qq.com
  * @time 2022-10-14 15:26
  * 权限相关的业务接口，
- * 权限的操作是需要记录到数据库中
+ * 权限只能查询
  */
 public interface PermService {
     /**

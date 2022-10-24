@@ -13,4 +13,6 @@ public interface DictDAO {
 	Integer updateDictAuto(@Param("dict") Dict dict);
 	Integer deleteDict(@Param("did") int did);
 	Integer countAll();
+
+	Dict findByKey(@Param("key") int key);
 }

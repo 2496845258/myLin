@@ -11,7 +11,7 @@ public class LeavePO extends Leave {
 	public LeavePO() {
 	}
 
-	public LeavePO(Integer vid, String vto, Timestamp vend, String vtype, Integer vstatus, Timestamp vtime, Timestamp vstart, String vcheck, String vfrom, String vreason) {
+	public LeavePO(Integer vid, String vto, Timestamp vend, String vtype, Integer vstatus, Timestamp vtime, Timestamp vstart, String vcheck, Integer vfrom, String vreason) {
 		 this.vid = vid;
 		 this.vto = vto;
 		 this.vend = vend;

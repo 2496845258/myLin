@@ -7,11 +7,8 @@ import indi.crisp.mylin.pojo.Role;
  * @author luzhaoya@qq.com
  * @time 2022-10-14 15:17
  * 角色相关的业务接口，
- * 角色的操作是需要记录到数据库中
+ * 角色操作只能查询
  */
 public interface RoleService {
-    int insertRole(Role role) throws AppAbnormal;
-    int deleteRole(int rid) throws AppAbnormal;
-    int updateRole(Role role) throws AppAbnormal;
-
+    //只允许查询
 }
