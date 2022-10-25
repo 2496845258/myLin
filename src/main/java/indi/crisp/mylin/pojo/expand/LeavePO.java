@@ -1,10 +1,13 @@
 package indi.crisp.mylin.pojo.expand;
 
 import indi.crisp.mylin.pojo.Leave;
+import indi.luzhao.summer.annotate.markclass.Serialize;
+
 import java.lang.Integer;
 import java.lang.String;
 import java.sql.Timestamp;
 
+@Serialize
 public class LeavePO extends Leave {
 	public LeavePO() {
 	}

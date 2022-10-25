@@ -3,17 +3,669 @@
 <head>
     <meta charset="UTF-8">
     <title>业务页面</title>
+    <link rel="stylesheet" type="text/css" href="/mylin/css/liantiankuang1.css">
+    <style>
+        body {
+            background-color: #d7d7d7;
+        }
+        #xxx {
+            position: relative;
+            width: 200px;
+            height: 740px;
+        }
+
+        #xxx dt button{
+            position: relative;
+            border-radius: 25px;
+            border: 2px solid #d1d0d1;
+            top: 100px;
+            margin-top: 25px;
+            left: 7px;
+            width: 180px;
+            height: 100px;
+            font-size: 25px;
+        }
+        .information {
+            position: relative;
+            height: 0px;
+            width: 200px;
+        }
+        img {
+            width: 80px;
+        }
+        .information p{
+            position: relative;
+            left: 90px;
+            top: -60px;
+        }
+        .dhl {
+            top: 5px;
+            left: 200px;
+            position: absolute;
+            width: 1310px;
+            height: 100px;
+        }
+        .mk{
+            top: 110px;
+            left: 200px;
+            position: absolute;
+            width: 1310px;
+            height: 630px;
+        }
+        .ddd {
+            position: relative;
+            width: 1310px;
+            height: 100px;
+        }
+        .ddd dt button{
+            position: relative;
+            float: left;
+            border-radius: 25px;
+            border: 2px solid #d1d0d1;
+            left: 20px;
+            margin-left: 20px;
+            width: 180px;
+            height: 80px;
+            font-size: 25px;
+        }
+        table{
+            position: relative;
+            top: 20px;
+            left: 20px;
+            width: 1300px;
+
+        }
+        th {
+            font-size: 25px;
+            background-color: #c6c6c6;
+            color: white;
+        }
+        tr:nth-of-type(1) ~:hover {background-color: #f5f5f5;}
+        tr,td{
+            width: 1600px;
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        .mk div {
+            width: 1300px;
+            height: 620px;
+        }
+        .mk div button{
+            position: relative;
+            border-radius: 25px;
+            border: 2px solid #d1d0d1;
+            height: 50px;
+            width: 100px;
+            top: 10px;
+            left: 20px;
+        }
+
+        .mtk-bj{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+            display: none;
+            top: 0px;
+            left: 0px;
+            z-index: 1;
+        }
+        .mtk-tc{
+            position: relative;
+            border-radius: 25px;
+            left: 450px;
+            top: 100px;
+            width: 620px;
+            height: 500px;
+            background: #FFFFFF;
+        }
+        .close{
+            position: relative;
+            border-radius: 25px;
+            border: 2px solid #d1d0d1;
+            left: 580px;
+            top: 10px;
+            width: 30px;
+        }
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .pagination {
+            position: fixed;
+            display: none;
+            top: 700px;
+            left: 650px;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+
+    </style>
 </head>
 <body>
-    <img src="../img/">
+<div class="modal-box">
+    <div class="modal">
+        <div class="modal-head">
+            <div id="title_t1">名称</div>
+            <button class="modal-exit">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="msg_p">
+                <div class="msg_p_div_lift">
+                    <div class="msg_p_div_span_lift">今天晚上加个班，加到明天早上可以吗</div>
+                </div>
+            </div>
+            <div class="msg_p">
+                <div class="msg_p_div_right">
+                    <div class="msg_p_div_span_right">你要不要看看你在说什么啊啊啊啊啊啊啊</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <textarea id="textarea1"></textarea>
+            <a href="javascript:void(0)" id="textarea1a1"><button>发送</button></a>
+        </div>
+    </div>
+</div>
     <div>
         <dl id="xxx">
 
         </dl>
+        <div class="dhl">
+            <dl class="ddd">
+                <dt><button>首页</button></dt>
+            </dl>
+        </div>
+        <div class="mtk-bj">
+            <div class="mtk-tc">
+                <button class="close">x</button>
+                <div class="mtk-qj" style="display: none">
+                    <label for="qjr">请假人</label>
+                    <input type="text" id="qjr" name="qjr" placeholder="请输入姓名">
+
+                    <label for="ksjj">请假开始时间</label>
+                    <input type="text" id="ksjj" name="ksjj" placeholder="请输入请假时间">
+
+                    <label for="qjyy">请假原因</label>
+                    <select id="qjyy" name="qjyy">
+                        <option value="无">请选择原因</option>
+                        <option value="婚假">婚假</option>
+                        <option value="病假">病假</option>
+                        <option value="事假">事假</option>
+                        <option value="丧假">丧假</option>
+                    </select>
+                    <label for="jsjj">请假结束时间</label>
+                    <input type="text" id="jsjj" name="lastname" placeholder="请输入请假时间">
+                    <input type="submit" value="申请请假" class="sqjj">
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+        <div class="mk">
+            <div id="qj" style="display: none">
+                <button class="bqj">申请请假</button>
+                <table class="tqj">
+                    <tr class="qjbegin">
+                        <th>请假人</th>
+                        <th>请假开始时间</th>
+                        <th>请假原因</th>
+                        <th>请假结束时间</th>
+                        <th>请假审核状态</th>
+                    </tr>
+                    <tr>
+                        <td>张三</td>
+                        <td>2022-10-23</td>
+                        <td>婚假</td>
+                        <td>2022-10-28</td>
+                        <td>待审核</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="tz" style="display: none">
+                <table class="ttz">
+                    <tr>
+                        <th>姓名</th>
+                        <th>部门</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>张三</td>
+                        <td>生产部</td>
+                        <td><button>联系他</button></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="qjsh" style="display: none">
+                <table >
+                    <tr>
+                        <th>请假审核</th>
+                        <th>请假审核</th>
+                        <th>请假审核</th>
+                        <th>请假审核</th>
+                    </tr>
+                    <tr>
+                        <td>请假审核</td>
+                        <td>请假审核</td>
+                        <td>请假审核</td>
+                        <td>请假审核</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="bq" style="display: none">
+                <button class="bbj">添加便签</button>
+                <table >
+                    <tr>
+                        <th>便签内容</th>
+                        <th>便签操作</th>
+                    </tr>
+                    <tr>
+                        <td>今天需要加班</td>
+                        <td><button>删除</button><button>修改</button></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="bmgl" style="display: none">
+                <button class="bbmgl">新增部门</button>
+                <table >
+                    <tr>
+                        <th>部门管理</th>
+                        <th>部门管理</th>
+                        <th>部门管理</th>
+                        <th>部门管理</th>
+                    </tr>
+                    <tr>
+                        <td>部门管理</td>
+                        <td>部门管理</td>
+                        <td>部门管理</td>
+                        <td>部门管理</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="yggl" style="display: none">
+                <button class="byygl">新增员工</button>
+                <table>
+                    <tr>
+                        <th>员工管理</th>
+                        <th>员工管理</th>
+                        <th>员工管理</th>
+                        <th>员工管理</th>
+                    </tr>
+                    <tr>
+                        <td>员工管理</td>
+                        <td>员工管理</td>
+                        <td>员工管理</td>
+                        <td>员工管理</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="rzjl" style="display: none">
+                <button class="byygl">日志记录</button>
+                <table>
+                    <tr>
+                        <th>日历记录</th>
+                        <th>日历记录</th>
+                        <th>日历记录</th>
+                        <th>日历记录</th>
+                    </tr>
+                    <tr>
+                        <td>日历记录</td>
+                        <td>日历记录</td>
+                        <td>日历记录</td>
+                        <td>日历记录</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <a href="#">«</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">»</a>
+            </div>
+        </div>
     </div>
 
   <script>
+      function linkbutton() {
+          document.querySelectorAll("#xxx button").forEach(function (e) {
+              e.addEventListener("click", function () {
+                  console.log(document.querySelector(".tqj").childNodes.length)
+                  var newdt = document.createElement("dt")
+                  var newbutton = document.createElement("button")
+                  var flag = true
+                  var name = e.innerText
+                  document.querySelectorAll(".ddd button").forEach(function (e) {
+                      if (name == e.innerText){
+                          flag = false
+                      }
+                  })
+                  if (flag){
+                      newbutton.innerText = name
+                      newbutton.addEventListener("dblclick", function () {
+                          document.querySelector(".ddd").removeChild(this.parentNode)
+                          switch (newbutton.innerText) {
+                              case  "我的便签" :{
+                                  document.querySelector("#bq").style.display = "none"
+                                  break
+                              }
+                              case "请假" :{
+                                  document.querySelector("#qj").style.display = "none"
+                                  break
+                              }
+                              case "请假审核":{
+                                  document.querySelector("#qjsh").style.display = "none"
+                                  break
+                              }
+                              case "发送通知" :{
+                                  document.querySelector("#tz").style.display = "none"
+                                  break
+                              }
+                              case "部门管理" :{
+                                  document.querySelector("#bmgl").style.display = "none"
+                                  break
+                              }
+                              case "员工管理" :{
+                                  document.querySelector("#yggl").style.display = "none"
+                                  break
+                              }
+                              case "日志记录" :{
+                                  document.querySelector("#rzjl").style.display = "none"
+                                  break
+                              }
+                          }
+                          document.querySelector(".pagination").style.display = "none"
+                      })
+                      newbutton.addEventListener("click", xs)
+                      newdt.appendChild(newbutton)
+                      document.querySelector(".ddd").appendChild(newdt)
 
+                  }
+                  xs(e)
+              })
+          })
+      }
+
+
+
+      function xs(e) {
+          document.querySelectorAll(".mk>div").forEach(function (e) {
+              e.style.display = "none"
+              document.querySelector(".mk>div:nth-last-of-type(1)").style.display = "inline-block"
+          })
+          switch (this.innerText || e.innerText) {
+              case  "我的便签" :{
+                  document.querySelector("#bq").style.display = "block"
+                  break
+              }
+              case "请假" :{
+                  document.querySelector("#qj").style.display = "block"
+                  qjqq()
+                  break
+              }
+              case "请假审核":{
+                  document.querySelector("#qjsh").style.display = "block"
+                  break
+              }
+              case "发送通知" :{
+                  document.querySelector("#tz").style.display = "block"
+                  break
+              }
+              case "部门管理" :{
+                  document.querySelector("#bmgl").style.display = "block"
+                  break
+              }
+              case "员工管理" :{
+                  document.querySelector("#yggl").style.display = "block"
+                  break
+              }
+              case "日志记录" :{
+                  document.querySelector("#rzjl").style.display = "block"
+                  break
+              }
+          }
+      }
+
+      function qjqq() {
+
+          leave = new XMLHttpRequest()
+          leave.open("GET","/mylin/hello/login/leave",true)
+          leave.send();
+          var cont = 0;
+          leave.onreadystatechange = function (){
+              if (this.status == 200) {
+                  var str = leave.responseText;
+                  if (null != str && str.length != 0 && cont < 1) {
+                      var t = JSON.parse(leave.responseText)
+                      var qtable = document.querySelector(".tqj")
+                      var childNodes = qtable.childNodes
+                      for (var i = childNodes.length - 1; i > 1; i--){
+                          qtable.removeChild(childNodes[i])
+                      }
+
+                      for (var i = 0; i < t.length-1; i++){
+                          var newtr = document.createElement("tr")
+                          var newtdqjr = document.createElement("td")
+                          var newtdkssj = document.createElement("td")
+                          var newtdyy = document.createElement("td")
+                          var newtdjssj = document.createElement("td")
+                          var newtdzt = document.createElement("td")
+                          newtdqjr.innerText = t[t.length-1].name
+                          newtdzt.innerText = "待审核"
+                          newtdkssj.innerText = t[i].kssj
+                          newtdjssj.innerText = t[i].jsjj
+                          newtdyy.innerText = t[i].qjyy
+
+                          document.querySelector(".tqj").appendChild(newtr)
+                          newtr.appendChild(newtdqjr)
+                          newtr.appendChild(newtdkssj)
+                          newtr.appendChild(newtdyy)
+                          newtr.appendChild(newtdjssj)
+                          newtr.appendChild(newtdzt)
+                      }
+                      cont = 1
+
+                  }
+              }
+          }
+      }
+
+      document.querySelectorAll(".mk div>button").forEach(function (e) {
+          e.addEventListener("click",function () {
+              document.querySelector(".mtk-bj").style.display = "block"
+          })
+      })
+
+      document.querySelector(".bqj").addEventListener("click",function () {
+          document.querySelector(".mtk-qj").style.display = "block"
+      })
+
+      document.querySelector(".close").addEventListener("click",function () {
+          document.querySelectorAll(".mtk-tc div").forEach(function (e) {
+              e.style.display = "none"
+          })
+          document.querySelector(".mtk-bj").style.display = "none"
+
+          document.querySelectorAll("input").forEach(function (e) {
+              if (e.type != "submit"){
+                  e.value = ""
+              }
+          })
+          document.querySelectorAll("option").forEach(function (e) {
+              e.value = "无"
+          })
+      })
+
+      document.querySelector(".sqjj").addEventListener("click",function () {
+          var newtr = document.createElement("tr")
+          var newtdqjr = document.createElement("td")
+          var newtdkssj = document.createElement("td")
+          var newtdyy = document.createElement("td")
+          var newtdjssj = document.createElement("td")
+          var newtdzt = document.createElement("td")
+          newtdqjr.innerText = document.querySelector("#qjr").value
+          document.querySelector("#qjr").value = ""
+          newtdzt.innerText = "待审核"
+          newtdkssj.innerText = document.querySelector("#ksjj").value
+          document.querySelector("#ksjj").value = ""
+          newtdjssj.innerText = document.querySelector("#jsjj").value
+          document.querySelector("#jsjj").value = ""
+          newtdyy.innerText = document.querySelector("#qjyy").value
+          document.querySelector("#qjyy").value = "无"
+
+          document.querySelector(".tqj").appendChild(newtr)
+          newtr.appendChild(newtdqjr)
+          newtr.appendChild(newtdkssj)
+          newtr.appendChild(newtdyy)
+          newtr.appendChild(newtdjssj)
+          newtr.appendChild(newtdzt)
+
+          document.querySelectorAll(".mtk-tc div").forEach(function (e) {
+              e.style.display = "none"
+          })
+          document.querySelector(".mtk-bj").style.display = "none"
+          // 添加后 查询数据库 重新显示
+          qjqq()
+      })
+      function motai() {
+          var bts1 = document.querySelector('.ttz button');
+          var bts2 = document.querySelector('.modal-exit')
+          var mo_bs = document.querySelectorAll('.modal-box');
+          var mos = document.querySelectorAll(".modal");
+          var textarea1a1 = document.querySelector("#textarea1a1");
+          var input_textarea1 = document.querySelector('#textarea1');
+
+          bts1.addEventListener('click', function () {
+              mo_bs[0].style.display = "block";
+          })
+
+          bts2.addEventListener('click', function () {
+              mo_bs[0].style.display = "none";
+          })
+
+          mos[0].addEventListener('keyup', function (e) {
+              switch ( e.keyCode ) {
+                  case 27 : mo_bs[0].style.display = "none"; break;
+                  case 13 : getInput_textarea(input_textarea1); break;
+              }
+          })
+
+          textarea1a1.addEventListener('click', function () {
+              getInput_textarea(input_textarea1);
+          })
+
+          var body1 = document.querySelectorAll('.modal-body')[0];
+          var getInput_textarea = function (text) {
+              var msg = text.value;
+              text.value = null;
+              if ( msg.length < 2 ) {
+                  return;
+              }
+              var d1 = document.createElement('div');
+              var d2 = document.createElement('div');
+              var sp1 = document.createElement('div');
+
+              sp1.innerText = msg;
+              sp1.setAttribute('class','msg_p_div_span_right');
+              d2.setAttribute('class', 'msg_p_div_right');
+              d1.setAttribute('class','msg_p');
+
+              d2.append(sp1);
+              d1.append(d2);
+              body1.append(d1);
+
+              /* 永远是最后一条 */
+              body1.scrollTop = body1.scrollHeight;
+          }
+          // f()
+          // 通知信息交互
+          function f() {
+              msg = new XMLHttpRequest()
+              setInterval(()=>{
+                  msg.open("GET","/mylin/hello/login/msg",true)
+                  msg.send();
+                  var count = 0;
+                  msg.onreadystatechange = function (){
+                      if (this.status == 200) {
+                          var t = msg.responseText
+                          if (t != null && t.length != 0){
+                              var j = JSON.parse(t)
+                              if (j != null && j.length != 0 && count < 1){
+                                  var d1 = document.createElement('div');
+                                  var d2 = document.createElement('div');
+                                  var sp1 = document.createElement('div');
+
+                                  // 获取的文本
+                                  sp1.innerText = j.msg;
+
+                                  sp1.setAttribute('class','msg_p_div_span_lift');
+                                  d2.setAttribute('class', 'msg_p_div_lift');
+                                  d1.setAttribute('class','msg_p');
+
+                                  d2.append(sp1);
+                                  d1.append(d2);
+                                  body1.append(d1);
+                                  count = 1;
+                              }
+                          }
+                      }
+
+                  }
+              },1000)
+          }
+      }
+
+      window.onload = function () {
+          motai();
+      }
 
         longin()
         function longin() {
@@ -26,14 +678,13 @@
                     var str = business.responseText;
                     if (null != str && str.length != 0){
                         var t = JSON.parse(business.responseText)
-                        if (null != t.perm && t.perm.length != 0 && count == 0){
-                            for (var i = 0; i < t.perm.length; i++){
+
+                        if (null != t && t.length != 0 && count == 0){
+                            for (var i = 0; i < t.length; i++){
                                 var newdt = document.createElement("dt")
                                 var newbutton  = document.createElement("button")
-                                newbutton.innerText = t.perm[i]
-                                newbutton.addEventListener("click", function () {
-                                    console.log(this.innerText)
-                                })
+                                newbutton.innerText = t[i].pnamezh
+                                newbutton.addEventListener("click", linkbutton)
                                 newdt.appendChild(newbutton)
                                 document.querySelector("div dl").appendChild(newdt)
                                 count = 1;
@@ -42,20 +693,6 @@
                     }
                 }
 
-            }
-        }
-
-        function tx() {
-            tx = new XMLHttpRequest()
-            tx.open("GET","/mylin/hello/tx",true)
-            tx.send();
-            tx.onreadystatechange = function () {
-                if (this.status == 200){
-                    var str = business.responseText;
-                    if (null != str && str.length != 0){
-                        document.querySelector("img").src = ""
-                    }
-                }
             }
         }
 

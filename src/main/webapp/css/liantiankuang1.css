@@ -1,0 +1,213 @@
+.modal {
+    position: fixed;
+
+    height: 500px;
+    width: 600px;
+
+    top: 10%;
+    /*万能左右居中*/
+    left: calc(50% - 300px);
+
+    /*背景*/
+    background-color: white;
+
+    /*圆角*/
+    border-radius: 10px;
+    /*内容边框*/
+    border: solid 1px #CCCCCC;
+}
+
+.modal-box {
+    /*固定定位*/
+    position: fixed;
+
+    left: 0px;
+    top: 0px;
+
+    /*设置大背景的颜色*/
+    width: 100%;
+    height: 100%;
+
+    /*设置透明度*/
+    background: rgba(80, 80, 80, 0.5);
+
+    /*初始隐藏*/
+    /*visibility: hidden;*/
+
+    /*隐藏（从文档流中去除）*/
+    display: none;
+    z-index: 1;
+}
+
+.modal>div {
+    position: relative;
+    /*每个div的顶部线条*/
+    border-top: solid 1px #000000;
+}
+
+.modal>.modal-head {
+    position: relative;
+    height: 10%;
+    /*头不需要顶部线条*/
+    border-top: 0px;
+}
+
+/*关闭按钮*/
+.modal-exit {
+    position: relative;
+    /*将按钮边框去除*/
+    border: 0px;
+
+    left: calc(100% - 40px);
+    top: -20px;
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+
+    /*设置按钮的背景*/
+    background-color: white;
+}
+.modal-exit:hover {
+    color: #e02d02;
+}
+
+.modal-body {
+    height: 70%;
+    /*overflow: auto;*/
+    overflow: hidden;
+
+}
+.modal-body:hover {
+    /* 出现滚动条 并且比 auto更好，不会挤压文档流 */
+    /*overflow: auto;*/
+    /*noinspection CssInvalidPropertyValue*/
+    overflow: overlay;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-body::-webkit-scrollbar-track {
+
+    /*  不设置背景色  */
+}
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: #c2c8c9;
+    border-radius: 20px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background-color: #51cfe8;
+}
+
+.modal-footer {
+    height: 20%;
+}
+
+#textarea1 {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    border: 0px;
+
+    font-size: 16px;
+    /*下边圆角*/
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    outline: 0px;
+    margin: 0px;
+    /*不显示输入框效果*/
+    resize: none;
+}
+
+#textarea1::-webkit-scrollbar {
+    width: 8px;
+}
+#textarea1::-webkit-scrollbar-track {
+
+    /*  不设置背景色  */
+}
+#textarea1::-webkit-scrollbar-thumb {
+    background-color: #e7c4b1;
+    border-radius: 20px;
+}
+
+#textarea1::-webkit-scrollbar-thumb:hover {
+    background-color: #51cfe8;
+}
+
+
+#textarea1a1 {
+    position: relative;
+    top: -55%;
+    left: 82%;
+}
+
+#textarea1a1>button {
+    width: 80px;
+    height: 30px;
+    background-color: #878a8c;
+    color: white;
+
+    border-radius: 10px;
+    border: 0px;
+}
+
+#textarea1a1>button:hover {
+    background-color: #51cfe8;
+    color: black;
+}
+
+#title_t1 {
+    position: relative;
+    top: 20%;
+    text-align: center;
+    font-size: 18px;
+    width: 60px;
+    left: calc(50% - 40px);
+}
+
+.msg_p {
+    clear: both;
+    width: 100%;
+    margin-top: 4%;
+}
+
+.msg_p_div_lift {
+    position: relative;
+    left: 2%;
+    width: 46%;
+}
+
+.msg_p_div_right {
+    /* 浮动清除 */
+    clear: both;
+
+    position: relative;
+    right: 2%;
+    left: 52%;
+    width: 46%;
+}
+
+.msg_p>div>* {
+    padding: 5px;
+    border-radius: 5px;
+    line-height: 1.5;
+    /*聊天界面专用的自动*/
+    width: fit-content;
+}
+.msg_p_div_span_lift {
+    /* 浮动到左边 */
+    float: left;
+    margin-top: 10px;
+    background-color: #72d8ee;
+}
+
+.msg_p_div_span_right {
+    /* 浮动到右边左边 */
+    float: right;
+    margin-top: 10px;
+    background-color: #8aecb0;
+}

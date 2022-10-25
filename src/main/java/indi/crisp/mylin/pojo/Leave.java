@@ -1,9 +1,13 @@
 package indi.crisp.mylin.pojo;
 
+import indi.luzhao.summer.annotate.markclass.Serialize;
+
 import java.lang.Integer;
 import java.lang.String;
 import java.sql.Timestamp;
 
+
+@Serialize
 public class Leave {
 
 	protected Integer vid;
@@ -113,4 +117,19 @@ public class Leave {
 		 this.vreason = vreason;
 	}
 
+	@Override
+	public String toString() {
+		return "Leave{" +
+				"vid=" + vid +
+				", vto=" + vto +
+				", vend=" + vend +
+				", vtype='" + vtype + '\'' +
+				", vstatus=" + vstatus +
+				", vtime=" + vtime +
+				", vstart=" + vstart +
+				", vcheck='" + vcheck + '\'' +
+				", vfrom=" + vfrom +
+				", vreason='" + vreason + '\'' +
+				'}';
+	}
 }

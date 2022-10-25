@@ -17,7 +17,7 @@ public class MyCodeBuilder {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         var map = new HashMap<String, String>();
         map.put("driver", "com.mysql.cj.jdbc.Driver");
-        map.put("url", "jdbc:mysql://localhost:3306/lin");
+        map.put("url", "jdbc:mysql://luzhao.top:3306/lin");
         map.put("username", "root");
         map.put("password", "root");
 

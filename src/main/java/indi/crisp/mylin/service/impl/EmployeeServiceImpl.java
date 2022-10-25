@@ -121,7 +121,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         // 判断账号是否存在
         if (null == employeeDAO.findEmployeebyAccount(account)){
-            return new Feedback<>().setStatusCode(AppEnum.EMPLOYEE_ACCOUNT_NULL.getCode());
+            return new Feedback<>().setStatusCode(AppEnum.EMPLOYEE_ACCOUNT_NULL.getCode()).setExplain(AppEnum.EMPLOYEE_ACCOUNT_NULL.getDescribe());
         }
 
 
@@ -129,17 +129,17 @@ public class EmployeeServiceImpl implements EmployeeService {
             Employee employee = employeeDAO.findEmployeebyAccount(account);
             // 员工离职
             if (employee.getEstatus() == 1202){
-                return new Feedback<>().setStatusCode(AppEnum.EMPLOYEE_LEAVE.getCode());
+                return new Feedback<>().setStatusCode(AppEnum.EMPLOYEE_LEAVE.getCode()).setExplain(AppEnum.EMPLOYEE_LEAVE.getDescribe());
             }
             // 密码错误
             if (!employee.getEpwd().equals(DigestUtils.md5DigestAsHex((password+employee.getEsalt()).getBytes()))){
-                return new Feedback<>().setStatusCode(AppEnum.EMPLOYEE_PASSWORD_WRONG.getCode());
+                return new Feedback<>().setStatusCode(AppEnum.EMPLOYEE_PASSWORD_WRONG.getCode()).setExplain(AppEnum.EMPLOYEE_PASSWORD_WRONG.getDescribe());
             }
 
             Migrate.change(employee,employeeVO);
             employeeVO.setRole(roleDAO.findEmpnoRole(employeeVO.getEmpno()));
             employeeVO.setPermList(permDAO.findEmpnoList(employee.getErole()));
-            return new Feedback<>().setResult(employeeVO).setStatusCode(AppEnum.EMPLOYEE_LOGIN_YES.getCode());
+            return new Feedback<>().setResult(employeeVO).setStatusCode(AppEnum.EMPLOYEE_LOGIN_YES.getCode()).setExplain(AppEnum.EMPLOYEE_LOGIN_YES.getDescribe());
 
         }finally {
            session.close();

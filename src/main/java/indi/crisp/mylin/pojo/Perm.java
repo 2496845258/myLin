@@ -1,8 +1,11 @@
 package indi.crisp.mylin.pojo;
 
+import indi.luzhao.summer.annotate.markclass.Serialize;
+
 import java.lang.Integer;
 import java.lang.String;
 
+@Serialize
 public class Perm {
 
 	protected String proute;
