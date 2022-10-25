@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 
 public class NotifyVO extends Notify {
 
+	private String fname;
+	private String tname;
 
 	public NotifyVO() {
 	}
@@ -21,4 +23,19 @@ public class NotifyVO extends Notify {
 		 this.ntime = ntime;
 	}
 
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getTname() {
+		return tname;
+	}
+
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
 }

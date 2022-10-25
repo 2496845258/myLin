@@ -2,12 +2,18 @@ package indi.crisp.mylin.service.impl;
 
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.config.AppEnum;
+import indi.crisp.mylin.dao.EmployeeDAO;
 import indi.crisp.mylin.dao.NotifyDAO;
 import indi.crisp.mylin.pojo.Notify;
+import indi.crisp.mylin.pojo.expand.EmployeeVO;
+import indi.crisp.mylin.pojo.expand.NotifyVO;
 import indi.crisp.mylin.service.NotifyService;
 import indi.crisp.mylin.util.Feedback;
+import indi.crisp.mylin.util.Migrate;
 import indi.crisp.mylin.util.MybatisUtil;
 import indi.crisp.mylin.util.Paginate;
+
+import java.util.LinkedList;
 
 public class NotifyServiceImpl implements NotifyService {
     @Override
@@ -37,7 +43,22 @@ public class NotifyServiceImpl implements NotifyService {
         try {
             var notifyDAO = session.getMapper(NotifyDAO.class);
             var notifies = notifyDAO.findByEmpID(eid1, eid2, index, step);
-            return new Feedback<>().setResult(new Paginate<Notify>().setList(notifies).setStep(notifies.size()).setIndex(index));
+            if ( notifies.size() == 0 ) {
+                return new Feedback<>().setResult(new Paginate<Notify>().setList(notifies).setStep(notifies.size()).setIndex(index));
+            }
+            var empDAO = session.getMapper(EmployeeDAO.class);
+            var emp1 = empDAO.findEmployeeByID(eid1);
+            var emp2 = empDAO.findEmployeeByID(eid2);
+
+            var notifies_new = new LinkedList<Notify>();
+            for ( var i : notifies ) {
+                var noVO = new NotifyVO();
+                Migrate.change(i,noVO);
+                noVO.setFname(emp1.getEname());
+                noVO.setTname(emp2.getEname());
+                notifies_new.add(noVO);
+            }
+            return new Feedback<>().setResult(new Paginate<Notify>().setList(notifies_new).setStep(notifies.size()).setIndex(index));
         } finally {
             session.close();
         }
