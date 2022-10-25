@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 
 public class LeaveVO extends Leave {
 
+	private String empName;
+	private String spStatus;
 
 	public LeaveVO() {
 	}
@@ -24,4 +26,19 @@ public class LeaveVO extends Leave {
 		 this.vreason = vreason;
 	}
 
+	public String getEmpName() {
+		return empName;
+	}
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+
+	public String getSpStatus() {
+		return spStatus;
+	}
+
+	public void setSpStatus(String spStatus) {
+		this.spStatus = spStatus;
+	}
 }

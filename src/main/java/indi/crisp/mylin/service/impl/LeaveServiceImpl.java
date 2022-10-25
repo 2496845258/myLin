@@ -2,12 +2,19 @@ package indi.crisp.mylin.service.impl;
 
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.config.AppEnum;
+import indi.crisp.mylin.dao.DictDAO;
+import indi.crisp.mylin.dao.EmployeeDAO;
 import indi.crisp.mylin.dao.LeaveDAO;
 import indi.crisp.mylin.pojo.Leave;
+import indi.crisp.mylin.pojo.expand.LeavePO;
+import indi.crisp.mylin.pojo.expand.LeaveVO;
 import indi.crisp.mylin.service.LeaveService;
 import indi.crisp.mylin.util.Feedback;
+import indi.crisp.mylin.util.Migrate;
 import indi.crisp.mylin.util.MybatisUtil;
 import indi.crisp.mylin.util.Paginate;
+
+import java.util.LinkedList;
 
 public class LeaveServiceImpl implements LeaveService {
     @Override
@@ -76,9 +83,27 @@ public class LeaveServiceImpl implements LeaveService {
         try {
             var leaveDAO = session.getMapper(LeaveDAO.class);
             var leaves = leaveDAO.findEmpIdList(eid, start, limit);
+
+            if ( leaves.size() == 0 ) {
+                return new Feedback<>().setResult(new Paginate<Leave>().setList(leaves));
+            }
+
+            var empDAO = session.getMapper(EmployeeDAO.class);
+            var name = empDAO.findEmployeeByID(eid).getEname();
+
+            var leaves2 = new LinkedList<Leave>();
+            var dictDAO = session.getMapper(DictDAO.class);
+            for ( var i : leaves ) {
+                var leaveVO = new LeaveVO();
+                Migrate.change(i,leaveVO);
+                leaveVO.setSpStatus(dictDAO.findByKey(i.getVstatus()).getDvalue());
+                leaveVO.setEmpName(name);
+                leaves2.add(leaveVO);
+            }
+
             return new Feedback<Paginate>()
                     .setResult(new Paginate<Leave>()
-                            .setList(leaves)
+                            .setList(leaves2)
                             .setIndex(start)
                             .setStep(leaves.size()));
         } finally {

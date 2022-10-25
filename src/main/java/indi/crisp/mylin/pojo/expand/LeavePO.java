@@ -6,8 +6,6 @@ import java.lang.String;
 import java.sql.Timestamp;
 
 public class LeavePO extends Leave {
-
-
 	public LeavePO() {
 	}
 
