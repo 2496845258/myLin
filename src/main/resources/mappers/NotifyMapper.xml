@@ -64,6 +64,7 @@
 		SELECT nid, nfrom, nto, ninfo, ntime, ntype, nstatus
 		FROM tblnotify
 		WHERE nfrom = #{fid} AND nto = #{tid}
+		ORDER BY ntime ASC
 		LIMIT #{start}, #{count};
 	</select>
 
