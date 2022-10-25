@@ -72,4 +72,10 @@
 		SELECT COUNT(empno) FROM tblemployee;
 	</select>
 
+	<!-- 根据部门查找负责人 -->
+	<select id="findDidEmp" resultType="indi.crisp.mylin.pojo.Employee">
+		SELECT empno, eloginid, ename, epwd, esalt, estatus, erole, edept, elasttime
+		FROM tbldept INNER JOIN tblemployee ON dhost = edept
+		WHERE dhost = #{did};
+	</select>
 </mapper>

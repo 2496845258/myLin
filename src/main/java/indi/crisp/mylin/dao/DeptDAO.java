@@ -13,4 +13,11 @@ public interface DeptDAO {
 	Integer updateDeptAuto(@Param("dept") Dept dept);
 	Integer deleteDept(@Param("dno") int dno);
 	Integer countAll();
+
+	/**
+	 * 根据部门id查找负责人
+	 * @param did
+	 * @return
+	 */
+	Dept findDidEmp(@Param("did") int did);
 }
