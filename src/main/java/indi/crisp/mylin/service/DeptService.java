@@ -54,5 +54,4 @@ public interface DeptService {
      * @throws AppAbnormal
      */
     Feedback<Dept> findDept(int id) throws AppAbnormal;
-
 }

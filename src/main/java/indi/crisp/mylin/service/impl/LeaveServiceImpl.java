@@ -2,6 +2,7 @@ package indi.crisp.mylin.service.impl;
 
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.config.AppEnum;
+import indi.crisp.mylin.dao.DeptDAO;
 import indi.crisp.mylin.dao.DictDAO;
 import indi.crisp.mylin.dao.EmployeeDAO;
 import indi.crisp.mylin.dao.LeaveDAO;
@@ -24,6 +25,24 @@ public class LeaveServiceImpl implements LeaveService {
         }
         var session = MybatisUtil.getSqlSession();
         try {
+            var empDAO = session.getMapper(EmployeeDAO.class);
+            var emp = empDAO.findEmployeeByID(leave.getVfrom());
+            if ( emp == null ) {
+                return AppEnum.EMP_FIND_ID_NO.getCode();
+            }
+            var deptDAO = session.getMapper(DeptDAO.class);
+            var empt = deptDAO.findDeptByID(emp.getEdept());
+            if ( empt == null ) {
+                return AppEnum.DEPT_FIND_NO.getCode();
+            }
+            if ( empt.getDhost() == 0 ) {
+                //如果没有就发给高管
+                leave.setVto(4);
+            } else {
+                //有就发给负责人
+                leave.setVto(empt.getDhost());
+            }
+
             var leaveDAO = session.getMapper(LeaveDAO.class);
             if ( leaveDAO.insertLeave(leave) > 0) {
                 session.commit();

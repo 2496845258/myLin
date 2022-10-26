@@ -78,4 +78,28 @@
 		FROM tbldept INNER JOIN tblemployee ON dhost = edept
 		WHERE dhost = #{did};
 	</select>
+
+	<!-- 根据员工id查看部门负责人 -->
+	<select id="findEmpDeptHost" resultType="indi.crisp.mylin.pojo.Employee">
+		SELECT empno, eloginid, ename, epwd, esalt, estatus, erole, edept, elasttime
+		FROM (tblemployee INNER JOIN tbldept ON edept = tbldept.dno AND tblemployee.edept = tbldept.dhost)
+		WHERE empno = #{eid};
+	</select>
+
+	<!-- 查看员工的聊天列表 -->
+	<select id="findDeptEmpList" resultType="indi.crisp.mylin.pojo.Employee">
+		SELECT empno, eloginid, ename, epwd, esalt, estatus, erole, edept, elasttime
+		FROM tblemployee
+		WHERE (edept = (SELECT edept FROM tblemployee WHERE empno = #{eid}) AND empno != #{eid} ) OR erole = 3
+		LIMIT #{start}, #{count};
+	</select>
+
+	<!-- 查看经理的聊天列表 -->
+	<select id="findDeptHostEmpList" resultType="indi.crisp.mylin.pojo.Employee">
+		SELECT empno, eloginid, ename, epwd, esalt, estatus, erole, edept, elasttime
+		FROM tblemployee
+		WHERE (edept = (SELECT edept FROM tblemployee WHERE empno = #{eid}) AND empno != #{eid} ) OR erole > 1
+		LIMIT #{start}, #{count};
+	</select>
+
 </mapper>

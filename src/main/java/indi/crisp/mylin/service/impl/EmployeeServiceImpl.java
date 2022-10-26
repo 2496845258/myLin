@@ -7,11 +7,11 @@ import indi.crisp.mylin.dao.PermDAO;
 import indi.crisp.mylin.dao.RoleDAO;
 import indi.crisp.mylin.pojo.Employee;
 import indi.crisp.mylin.pojo.expand.EmployeeVO;
-import indi.crisp.mylin.pojo.expand.PermVO;
 import indi.crisp.mylin.service.EmployeeService;
 import indi.crisp.mylin.util.Feedback;
 import indi.crisp.mylin.util.Migrate;
 import indi.crisp.mylin.util.MybatisUtil;
+import indi.crisp.mylin.util.Paginate;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.util.DigestUtils;
 
@@ -159,6 +159,54 @@ public class EmployeeServiceImpl implements EmployeeService {
                 return new Feedback<>().setStatusCode(AppEnum.EMP_FIND_ID_NO.getCode());
             }
             return new Feedback<>().setResult(employee).setStatusCode(AppEnum.EMP_FIND_ID_YES.getCode());
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public Feedback<Employee> findEmpDeptHost(int eid) throws AppAbnormal {
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var empDAO = session.getMapper(EmployeeDAO.class);
+            var emp = empDAO.findEmpDeptHost(eid);
+            return new Feedback<Employee>().setResult(emp);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public Feedback<Employee> findDidEmp(int deptId) throws AppAbnormal {
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var empDAO = session.getMapper(EmployeeDAO.class);
+            var emp = empDAO.findDidEmp(deptId);
+            return new Feedback<Employee>().setResult(emp);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public Feedback<Paginate<Employee>> findDeptEmpList(int eid, int start, int step) throws AppAbnormal {
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var employeeDAO = session.getMapper(EmployeeDAO.class);
+            var employees = employeeDAO.findDeptEmpList(eid,start,step);
+            return new Feedback<>().setResult(new Paginate<Employee>().setList(employees).setStep(step).setIndex(start));
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public Feedback<Paginate<Employee>> findDeptHostEmpList(int eid, int start, int step) throws AppAbnormal {
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var employeeDAO = session.getMapper(EmployeeDAO.class);
+            var employees = employeeDAO.findDeptHostEmpList(eid,start,step);
+            return new Feedback<>().setResult(new Paginate<Employee>().setList(employees).setStep(step).setIndex(start));
         } finally {
             session.close();
         }
