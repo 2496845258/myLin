@@ -76,7 +76,7 @@
 		SELECT vid, vfrom, vreason, vstart, vend, vtime, vtype, vstatus, vto, vcheck
 		FROM tblleave
 		WHERE vfrom = #{eid}
-		ORDER BY vtime ASC
+		ORDER BY vtime DESC
 		LIMIT #{start}, #{count};
 	</select>
 
@@ -84,7 +84,7 @@
 		SELECT vid, vfrom, vreason, vstart, vend, vtime, vtype, vstatus, vto, vcheck
 		FROM ((tbldept INNER JOIN tblemployee ON dno = tblemployee.edept) JOIN tblleave ON vfrom = tblemployee.empno)
 		WHERE dno = #{did}
-		ORDER BY vtime ASC
+		ORDER BY vtime DESC
 		LIMIT #{start}, #{count};
 	</select>
 
@@ -92,7 +92,7 @@
 		SELECT vid, vfrom, vreason, vstart, vend, vtime, vtype, vstatus, vto, vcheck
 		FROM tblleave
 		WHERE vto = #{tid}
-		ORDER BY vtime ASC
+		ORDER BY vtime DESC
 		LIMIT 0, 10;
 	</select>
 
