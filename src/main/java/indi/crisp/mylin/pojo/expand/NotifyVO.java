@@ -10,6 +10,9 @@ public class NotifyVO extends Notify {
 	private String fname;
 	private String tname;
 
+	private String fteptname;
+	private String tteptname;
+
 	public NotifyVO() {
 	}
 
@@ -37,5 +40,21 @@ public class NotifyVO extends Notify {
 
 	public void setTname(String tname) {
 		this.tname = tname;
+	}
+
+	public String getTteptname() {
+		return tteptname;
+	}
+
+	public void setTteptname(String tteptname) {
+		this.tteptname = tteptname;
+	}
+
+	public String getFteptname() {
+		return fteptname;
+	}
+
+	public void setFteptname(String fteptname) {
+		this.fteptname = fteptname;
 	}
 }

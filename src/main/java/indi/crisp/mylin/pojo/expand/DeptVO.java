@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 public class DeptVO extends Dept {
 
 
+	private String hostName;
 	public DeptVO() {
 	}
 
@@ -20,4 +21,11 @@ public class DeptVO extends Dept {
 		 this.dhost = dhost;
 	}
 
+	public String getHostName() {
+		return hostName;
+	}
+
+	public void setHostName(String hostName) {
+		this.hostName = hostName;
+	}
 }

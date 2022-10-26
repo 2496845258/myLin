@@ -5,10 +5,14 @@ import indi.crisp.mylin.config.AppEnum;
 import indi.crisp.mylin.dao.DeptDAO;
 import indi.crisp.mylin.dao.EmployeeDAO;
 import indi.crisp.mylin.pojo.Dept;
+import indi.crisp.mylin.pojo.expand.DeptVO;
 import indi.crisp.mylin.service.DeptService;
 import indi.crisp.mylin.util.Feedback;
+import indi.crisp.mylin.util.Migrate;
 import indi.crisp.mylin.util.MybatisUtil;
 import indi.crisp.mylin.util.Paginate;
+
+import java.util.LinkedList;
 
 public class DeptServiceImpl implements DeptService {
     @Override
@@ -67,10 +71,23 @@ public class DeptServiceImpl implements DeptService {
         var session = MybatisUtil.getSqlSession();
         try {
             var deptDAO = session.getMapper(DeptDAO.class);
-            var count = deptDAO.countAll();
+
+            var empDAO = session.getMapper(EmployeeDAO.class);
             var deptList = deptDAO.findDeptList(start,limit);
+
+            var deptVOList = new LinkedList<Dept>();
+            for ( var i : deptList ) {
+                var deptVO = new DeptVO();
+                Migrate.change(i,deptVO);
+                var t = empDAO.findEmployeeByID(i.getDhost());
+                if ( t == null ) {
+                    deptVO.setHostName("没有任命");
+                } else {
+                    deptVO.setHostName(t.getEname());
+                }
+            }
             return new Feedback<>().setResult(new Paginate<Dept>()
-                    .setList(deptList).setCountAll(count).setIndex(start).setStep(deptList.size()))
+                    .setList(deptVOList).setIndex(start).setStep(deptList.size()))
                     .setStatusCode(AppEnum.DEPT_FIND_YES.getCode());
         } finally {
             session.close();

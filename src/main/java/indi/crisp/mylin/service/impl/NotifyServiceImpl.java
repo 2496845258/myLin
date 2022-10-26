@@ -2,6 +2,7 @@ package indi.crisp.mylin.service.impl;
 
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.config.AppEnum;
+import indi.crisp.mylin.dao.DeptDAO;
 import indi.crisp.mylin.dao.EmployeeDAO;
 import indi.crisp.mylin.dao.NotifyDAO;
 import indi.crisp.mylin.pojo.Notify;
@@ -50,12 +51,18 @@ public class NotifyServiceImpl implements NotifyService {
             var emp1 = empDAO.findEmployeeByID(eid1);
             var emp2 = empDAO.findEmployeeByID(eid2);
 
+            var deptDAO = session.getMapper(DeptDAO.class);
+            var dep1 = deptDAO.findDeptByID(emp1.getEdept());
+            var dep2 = deptDAO.findDeptByID(emp2.getEdept());
+
             var notifies_new = new LinkedList<Notify>();
             for ( var i : notifies ) {
                 var noVO = new NotifyVO();
                 Migrate.change(i,noVO);
                 noVO.setFname(emp1.getEname());
                 noVO.setTname(emp2.getEname());
+                noVO.setFteptname(dep1.getDname());
+                noVO.setTteptname(dep2.getDname());
                 notifies_new.add(noVO);
             }
             return new Feedback<>().setResult(new Paginate<Notify>().setList(notifies_new).setStep(notifies.size()).setIndex(index));
