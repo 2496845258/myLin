@@ -30,6 +30,18 @@ public class LeaveServiceImpl implements LeaveService {
             if ( emp == null ) {
                 return AppEnum.EMP_FIND_ID_NO.getCode();
             }
+            //经理请假就给高管审批
+            if ( emp.getErole() == 2 ) {
+                //经理请假
+                leave.setVto(4);
+                var leaveDAO = session.getMapper(LeaveDAO.class);
+                if ( leaveDAO.insertLeave(leave) > 0) {
+                    session.commit();
+                    return AppEnum.LEAVE_INSERT_YES.getCode();
+                }
+                return AppEnum.LEAVE_INSERT_NO.getCode();
+            }
+            //普通员工走下面
             var deptDAO = session.getMapper(DeptDAO.class);
             var empt = deptDAO.findDeptByID(emp.getEdept());
             if ( empt == null ) {
@@ -43,6 +55,7 @@ public class LeaveServiceImpl implements LeaveService {
                 leave.setVto(empt.getDhost());
             }
 
+            //插入请假信息
             var leaveDAO = session.getMapper(LeaveDAO.class);
             if ( leaveDAO.insertLeave(leave) > 0) {
                 session.commit();
