@@ -54,4 +54,13 @@ public interface DeptService {
      * @throws AppAbnormal
      */
     Feedback<Dept> findDept(int id) throws AppAbnormal;
+
+    /**
+     * 更换部门负责人
+     * @param did
+     * @param eid
+     * @return
+     * @throws AppAbnormal
+     */
+    int updateDeptHost(int did, int eid) throws AppAbnormal;
 }
