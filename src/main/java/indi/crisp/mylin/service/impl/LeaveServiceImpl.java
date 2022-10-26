@@ -207,7 +207,7 @@ public class LeaveServiceImpl implements LeaveService {
                     .setResult(new Paginate<Leave>()
                             .setList(leaves2)
                             .setIndex(start)
-                            .setStep(leaves.size()));
+                            .setStep(leaves2.size()));
         } finally {
             session.close();
         }
