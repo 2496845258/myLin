@@ -61,8 +61,17 @@ public class NotifyServiceImpl implements NotifyService {
                 Migrate.change(i,noVO);
                 noVO.setFname(emp1.getEname());
                 noVO.setTname(emp2.getEname());
-                noVO.setFteptname(dep1.getDname());
-                noVO.setTteptname(dep2.getDname());
+                if ( dep1 != null ) {
+                    noVO.setFteptname(dep1.getDname());
+                } else {
+                    noVO.setFteptname("没有部门");
+                }
+                if ( dep2 != null ) {
+                    noVO.setTteptname(dep2.getDname());
+                } else {
+                    noVO.setTteptname("没有部门");
+                }
+
                 notifies_new.add(noVO);
             }
             return new Feedback<>().setResult(new Paginate<Notify>().setList(notifies_new).setStep(notifies.size()).setIndex(index));
