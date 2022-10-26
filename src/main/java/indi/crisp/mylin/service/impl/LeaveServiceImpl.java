@@ -171,9 +171,27 @@ public class LeaveServiceImpl implements LeaveService {
         try {
             var leaveDAO = session.getMapper(LeaveDAO.class);
             var leaves = leaveDAO.findToId(tid, start, limit);
+
+            if ( leaves.size() == 0 ) {
+                return new Feedback<>().setResult(new Paginate<Leave>().setList(leaves));
+            }
+
+            var empDAO = session.getMapper(EmployeeDAO.class);
+            var name = empDAO.findEmployeeByID(tid).getEname();
+
+            var leaves2 = new LinkedList<Leave>();
+            var dictDAO = session.getMapper(DictDAO.class);
+            for ( var i : leaves ) {
+                var leaveVO = new LeaveVO();
+                Migrate.change(i,leaveVO);
+                leaveVO.setSpStatus(dictDAO.findByKey(i.getVstatus()).getDvalue());
+                leaveVO.setEmpName(name);
+                leaves2.add(leaveVO);
+            }
+
             return new Feedback<Paginate>()
                     .setResult(new Paginate<Leave>()
-                            .setList(leaves)
+                            .setList(leaves2)
                             .setIndex(start)
                             .setStep(leaves.size()));
         } finally {
