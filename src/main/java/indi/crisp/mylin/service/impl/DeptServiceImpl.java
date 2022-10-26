@@ -65,7 +65,7 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public Feedback<Paginate<Dept>> findList(int start, int limit) throws AppAbnormal {
-        if ( start < 1 || limit < 1 ) {
+        if ( start < 0 || limit < 0 ) {
             throw new AppAbnormal(AppEnum.ERROR_DEPT_FIND_LIST);
         }
         var session = MybatisUtil.getSqlSession();
