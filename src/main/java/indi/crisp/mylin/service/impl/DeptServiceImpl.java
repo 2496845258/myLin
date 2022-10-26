@@ -104,6 +104,7 @@ public class DeptServiceImpl implements DeptService {
             var empDAO = session.getMapper(EmployeeDAO.class);
             var deptDAO = session.getMapper(DeptDAO.class);
 
+            //查询否有负责人
             var emp1 = empDAO.findDidEmp(did);
             if ( emp1 != null ) {
                 //有原来负责人
@@ -111,12 +112,16 @@ public class DeptServiceImpl implements DeptService {
                 empDAO.updateEmployeeAuto(emp1);
             }
 
+            //查找原来的员工
             var emp2 = empDAO.findEmployeeByID(eid);
+            //查找需要更改的部门
             var dept = deptDAO.findDeptByID(did);
+
 
             dept.setDhost(emp2.getEmpno());
             emp2.setErole(2);
 
+            //更新员工角色和部门负责人
             deptDAO.updateDeptAuto(dept);
             empDAO.updateEmployee(emp2);
 
