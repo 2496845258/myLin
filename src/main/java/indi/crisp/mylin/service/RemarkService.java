@@ -46,4 +46,14 @@ public interface RemarkService {
      * @throws AppAbnormal
      */
     Feedback<Paginate<Remark>> findRemarkList(int index, int step) throws AppAbnormal;
+
+    /**
+     * 分页查看某个员工的便签
+     * @param eid
+     * @param index
+     * @param step
+     * @return
+     * @throws AppAbnormal
+     */
+    Feedback<Paginate<Remark>> findRemarkByEid(int eid, int index, int step) throws AppAbnormal;
 }

@@ -48,4 +48,12 @@
 		SELECT COUNT(kid) FROM tblremark;
 	</select>
 
+	<!-- 查看某个员工的便签 -->
+	<select id="findRemarkByEid" resultType="indi.crisp.mylin.pojo.Remark">
+		SELECT ktime, kid, kinfo, kemp
+		FROM tblremark
+		WHERE kemp = #{eid}
+		LIMIT #{start}, #{count};
+	</select>
+
 </mapper>

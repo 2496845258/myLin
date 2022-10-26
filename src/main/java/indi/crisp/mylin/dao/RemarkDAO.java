@@ -13,4 +13,13 @@ public interface RemarkDAO {
 	Integer updateRemarkAuto(@Param("remark") Remark remark);
 	Integer deleteRemark(@Param("kid") int kid);
 	Integer countAll();
+
+	/**
+	 * 查看某个员工的便签分页
+	 * @param eid
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	List<Remark> findRemarkByEid(@Param("eid") int eid, @Param("start") int start, @Param("count") int count);
 }

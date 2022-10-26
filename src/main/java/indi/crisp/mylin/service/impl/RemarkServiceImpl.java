@@ -79,4 +79,16 @@ public class RemarkServiceImpl implements RemarkService {
             session.close();
         }
     }
+
+    @Override
+    public Feedback<Paginate<Remark>> findRemarkByEid(int eid, int index, int step) throws AppAbnormal {
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var remarkDAO = session.getMapper(RemarkDAO.class);
+            var remarks = remarkDAO.findRemarkByEid(eid, index, step);
+            return new Feedback<Paginate<Remark>>().setResult(new Paginate<Remark>().setList(remarks).setStep(remarks.size()).setIndex(index));
+        } finally {
+            session.close();
+        }
+    }
 }
