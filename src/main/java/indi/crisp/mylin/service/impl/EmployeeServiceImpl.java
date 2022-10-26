@@ -2,6 +2,7 @@ package indi.crisp.mylin.service.impl;
 
 import indi.crisp.mylin.abnormal.AppAbnormal;
 import indi.crisp.mylin.config.AppEnum;
+import indi.crisp.mylin.dao.DeptDAO;
 import indi.crisp.mylin.dao.EmployeeDAO;
 import indi.crisp.mylin.dao.PermDAO;
 import indi.crisp.mylin.dao.RoleDAO;
@@ -16,6 +17,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.util.DigestUtils;
 
 import java.sql.Timestamp;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.UUID;
 
@@ -207,6 +209,32 @@ public class EmployeeServiceImpl implements EmployeeService {
             var employeeDAO = session.getMapper(EmployeeDAO.class);
             var employees = employeeDAO.findDeptHostEmpList(eid,start,step);
             return new Feedback<>().setResult(new Paginate<Employee>().setList(employees).setStep(step).setIndex(start));
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public Feedback<Paginate<Employee>> findList(int start, int step) throws AppAbnormal {
+        var session = MybatisUtil.getSqlSession();
+        try {
+            var employeeDAO = session.getMapper(EmployeeDAO.class);
+            var employees = employeeDAO.findEmployeeList(start,step);
+
+            var deptDAO = session.getMapper(DeptDAO.class);
+            var empVOList = new LinkedList<Employee>();
+            for ( var i : employees ) {
+                var empVO = new EmployeeVO();
+                Migrate.change(i,empVO);
+                var t = deptDAO.findDeptByID(i.getEdept());
+                if ( t == null ) {
+                    empVO.setDeptName("没有部门");
+                } else {
+                    empVO.setDeptName(t.getDname());
+                }
+                empVOList.addLast(empVO);
+            }
+            return new Feedback<>().setResult(new Paginate<Employee>().setList(empVOList).setStep(empVOList.size()).setIndex(start));
         } finally {
             session.close();
         }

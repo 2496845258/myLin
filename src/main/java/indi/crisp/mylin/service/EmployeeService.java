@@ -58,4 +58,13 @@ public interface EmployeeService {
      * 获取经理的联系人列表
      */
     Feedback<Paginate<Employee>> findDeptHostEmpList(int eid, int start, int step) throws AppAbnormal;
+
+    /**
+     * 分页查看全部员工
+     * @param start
+     * @param step
+     * @return
+     * @throws AppAbnormal
+     */
+    Feedback<Paginate<Employee>> findList(int start, int step) throws AppAbnormal;
 }

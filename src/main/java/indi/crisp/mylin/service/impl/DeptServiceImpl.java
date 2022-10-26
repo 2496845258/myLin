@@ -85,9 +85,10 @@ public class DeptServiceImpl implements DeptService {
                 } else {
                     deptVO.setHostName(t.getEname());
                 }
+                deptVOList.add(deptVO);
             }
             return new Feedback<>().setResult(new Paginate<Dept>()
-                    .setList(deptVOList).setIndex(start).setStep(deptList.size()))
+                    .setList(deptVOList).setIndex(start).setStep(deptVOList.size()))
                     .setStatusCode(AppEnum.DEPT_FIND_YES.getCode());
         } finally {
             session.close();

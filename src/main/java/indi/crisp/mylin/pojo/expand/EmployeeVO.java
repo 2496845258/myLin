@@ -14,7 +14,7 @@ public class EmployeeVO extends Employee {
 	private Role role;
 	private List<Perm> permList;
 
-
+	private String deptName;
 	public EmployeeVO() {
 	}
 
@@ -44,6 +44,14 @@ public class EmployeeVO extends Employee {
 
 	public void setPermList(List<Perm> permList) {
 		this.permList = permList;
+	}
+
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
 	}
 
 	@Override
